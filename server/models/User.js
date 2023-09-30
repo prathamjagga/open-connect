@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
-const professorSchema = new mongoose.Schema({
-	phone: {
+const UserSchema = new mongoose.Schema({
+	email: {
 		type: String,
 		required: true,
 		unique: true,
@@ -11,22 +11,28 @@ const professorSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	coins: {
-		type: Number,
-		default: 0,
-	},
-	otp: {
+	experience: {
 		type: String,
+		required: true,
 	},
-	otpExpiry: {
-		type: Date,
+	password: {
+		type: String,
+		required: true,
 	},
-	department: {
+	story: {
+		type: String,
+		required: true,
+	},
+	photoURL: {
+		type: String,
+		required: true,
+	},
+	ghUsername: {
 		type: String,
 		required: true,
 	},
 });
 
-const Professor = mongoose.model("Professor", professorSchema);
+const User = mongoose.model("User", UserSchema);
 
-module.exports = Professor;
+module.exports = User;
