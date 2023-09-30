@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from './Navbar';
 
 const SuccessStories = () => {
   const successStories = [
@@ -13,6 +14,8 @@ const SuccessStories = () => {
   ];
 
   return (
+    <>
+    <Navbar />
     <div className="bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600 p-8 rounded-lg shadow-lg">
       <h2 className="text-3xl font-semibold mb-4 text-white">Success Stories</h2>
       {successStories.map((story, index) => (
@@ -25,6 +28,7 @@ const SuccessStories = () => {
         </div>
       ))}
     </div>
+    </>
   );
 };
 

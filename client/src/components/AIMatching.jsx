@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from './Navbar';
 
 const AIMatching = () => {
   // placeholder for mentorship recommendations
@@ -17,6 +18,8 @@ const AIMatching = () => {
   ];
 
   return (
+    <>
+    <Navbar />
     <div className="bg-gradient-to-b from-purple-400 via-purple-500 to-purple-600 p-8 rounded-lg shadow-lg">
       <h2 className="text-3xl font-semibold mb-4 text-white">AI Matching</h2>
       {mentorshipRecommendations.map((mentor, index) => (
@@ -35,6 +38,7 @@ const AIMatching = () => {
         </div>
       ))}
     </div>
+    </>
   );
 };
 

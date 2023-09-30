@@ -6,6 +6,9 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Contact from "./components/Contact";
 import About from "./components/About";
+import AIMatching from "./components/AIMatching";
+import SuccessStories from "./components/SuccessStories";
+import Mentor from "./components/mentor/Mentor";
 
 function App() {
 
@@ -16,6 +19,9 @@ function App() {
       <Route path='/signup' element={<Signup />} />
       <Route path='/contact' element={<Contact />} />
       <Route path='/about' element={<About />} />
+      <Route path='/findmentor' element={<AIMatching />} />
+      <Route path='/stories' element={<SuccessStories />} />
+      <Route path='/mentordash' element={<Mentor />} />
     </Routes>    
   );
 }
