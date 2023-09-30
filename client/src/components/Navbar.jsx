@@ -1,66 +1,54 @@
+/*eslint-disable*/
 import React from "react";
 import { Link } from "react-router-dom";
+// components
 
-export default function Navbar() {
+import Dropdown from "./Dropdown.jsx";
+
+export default function Navbar(props) {
+  const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
-      <nav className="bg-transparent mt-6">
-        <div className="container mx-auto flex flex-row-reverse justify-between px-4 py-3">
-          <ul className="flex space-x-32">
-            <li>
-              <Link
-                to="/explore"
-                className="text-[#000000] hover:text-blue-700 hover:underline text-[1.25rem] font-[600]"
-              >
-                Explore
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/findmentor"
-                className="text-[#000000] hover:text-blue-700 hover:underline text-[1.25rem] font-[600]"
-              >
-                Find Mentor
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/stories"
-                className="text-[#000000] hover:text-blue-700 hover:underline text-[1.25rem] font-[600]"
-              >
-                Success stories
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/about"
-                className="text-[#000000] hover:text-blue-700 hover:underline text-[1.25rem] font-[600]"
-              >
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/contact"
-                className="text-[#000000] hover:text-blue-700 hover:underline text-[1.25rem] font-[600]"
-              >
-                Contact Us
-              </Link>
-            </li>
-            <li className="bg-[#ff914d] border-2 border-dotted rounded-full px-3 py-1 w-35">
-              <Link
-                to="/login"
-                className="text-[#000000] hover:text-blue-700 text-[1.25rem] font-[600]"
-              >
-                Login &gt;
-              </Link>
-            </li>
-          </ul>
+      <nav className="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow">
+        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+            <Link
+              to="/"
+              className="text-blueGray-700 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
+            >
+              XYZ
+            </Link>
+            <button
+              className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+              type="button"
+              onClick={() => setNavbarOpen(!navbarOpen)}
+            >
+              <i className="fas fa-bars"></i>
+            </button>
+          </div>
+          <div
+            className={
+              "lg:flex flex-grow items-center bg-red-500 lg:bg-opacity-0 lg:shadow-none" +
+              (navbarOpen ? " block" : " hidden")
+            }
+            id="example-navbar-warning"
+          >
+            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+              <li className="flex items-center">
+                <Dropdown />
+              </li>
+              <li className="flex items-center">
+                <button
+                  className="bg-blue-500 text-white active:bg-blue-500 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                  type="button"
+                >
+                  <i className="fas fa-arrow-alt-circle-down"></i> ABC
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
-      <div class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded items-center w-fit ml-auto mr-5 cursor-pointer">
-        <Link to="/mentordash">Mentor Dashboard</Link>
-      </div>
     </>
   );
 }
