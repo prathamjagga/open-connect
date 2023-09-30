@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
+const userRoutes = require("./routes/User");
 
 const app = express();
 
@@ -23,3 +24,5 @@ mongoose
 	.catch((error) => {
 		console.error("MongoDB connection error:", error);
 	});
+
+app.use("/api/profiles", userRoutes);
