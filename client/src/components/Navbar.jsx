@@ -9,7 +9,7 @@ export default function Navbar() {
           <ul className="flex space-x-32">
             <li>
               <Link
-                to="/"
+                to="/explore"
                 className="text-[#000000] hover:text-blue-700 hover:underline text-[1.25rem] font-[600]"
               >
                 Explore
