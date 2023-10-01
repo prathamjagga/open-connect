@@ -96,18 +96,21 @@ export function SignUp() {
                   story,
                   photoUrl,
                 };
-                fetch("http://localhost:3000/api/profiles/addProfile", {
-                  // Adding method type
-                  method: "POST",
+                fetch(
+                  "https://hf-backend-7fmd.onrender.com/api/profiles/addProfile",
+                  {
+                    // Adding method type
+                    method: "POST",
 
-                  // Adding body or contents to send
-                  body: JSON.stringify(data),
+                    // Adding body or contents to send
+                    body: JSON.stringify(data),
 
-                  // Adding headers to the request
-                  headers: {
-                    "Content-type": "application/json; charset=UTF-8",
-                  },
-                })
+                    // Adding headers to the request
+                    headers: {
+                      "Content-type": "application/json; charset=UTF-8",
+                    },
+                  }
+                )
                   // Converting to JSON
                   .then((response) => response.json())
 

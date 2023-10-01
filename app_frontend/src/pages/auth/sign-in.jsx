@@ -58,7 +58,8 @@ export function SignIn() {
               onClick={async () => {
                 console.log("click");
                 fetch(
-                  "http://localhost:3000/api/profiles/get-one/" + ghUsername
+                  "https://hf-backend-7fmd.onrender.com/api/profiles/get-one/" +
+                    ghUsername
                 )
                   // Converting received data to JSON
                   .then((response) => response.json())
