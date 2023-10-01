@@ -1,1 +1,2 @@
-# Open-Source-Hackfest
+#        OpenExplore 
+"Connect, Create, Contribute"
