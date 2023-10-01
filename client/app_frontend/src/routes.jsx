@@ -12,8 +12,8 @@ import {
 import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
 import Matching from "@/pages/Matching";
 import Analyse from "@/pages/Analyse";
-
 import { SignIn, SignUp } from "@/pages/auth";
+import Intro from "@/Intro";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
