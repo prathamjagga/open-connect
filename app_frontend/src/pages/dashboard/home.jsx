@@ -31,41 +31,6 @@ import {
 export function Home() {
   return (
     <div className="mt-12">
-      <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
-        {statisticsCardsData.map(({ icon, title, footer, ...rest }) => (
-          <StatisticsCard
-            key={title}
-            {...rest}
-            title={title}
-            icon={React.createElement(icon, {
-              className: "w-6 h-6 text-white",
-            })}
-            footer={
-              <Typography className="font-normal text-blue-gray-600">
-                <strong className={footer.color}>{footer.value}</strong>
-                &nbsp;{footer.label}
-              </Typography>
-            }
-          />
-        ))}
-      </div>
-      <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
-        {statisticsChartsData.map((props) => (
-          <StatisticsChart
-            key={props.title}
-            {...props}
-            footer={
-              <Typography
-                variant="small"
-                className="flex items-center font-normal text-blue-gray-600"
-              >
-                <ClockIcon strokeWidth={2} className="h-4 w-4 text-inherit" />
-                &nbsp;{props.footer}
-              </Typography>
-            }
-          />
-        ))}
-      </div>
       <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
         <Card className="overflow-hidden xl:col-span-2">
           <CardHeader
@@ -76,14 +41,14 @@ export function Home() {
           >
             <div>
               <Typography variant="h6" color="blue-gray" className="mb-1">
-                Projects
+                Connect with mentors and top contributors on OpenExplore
               </Typography>
               <Typography
                 variant="small"
                 className="flex items-center gap-1 font-normal text-blue-gray-600"
               >
                 <CheckIcon strokeWidth={3} className="h-4 w-4 text-blue-500" />
-                <strong>30 done</strong> this month
+                <strong>Top</strong> this week ✅
               </Typography>
             </div>
             <Menu placement="left-start">
@@ -107,7 +72,7 @@ export function Home() {
             <table className="w-full min-w-[640px] table-auto">
               <thead>
                 <tr>
-                  {["companies", "members", "budget", "completion"].map(
+                  {["Contributor/Mentor", "", "Followers", "Growth"].map(
                     (el) => (
                       <th
                         key={el}
@@ -137,13 +102,22 @@ export function Home() {
                       <tr key={name}>
                         <td className={className}>
                           <div className="flex items-center gap-4">
-                            <Avatar src={img} alt={name} size="sm" />
+                            <Avatar
+                              src={
+                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUuXHoBKSoHnptobCO9Cv3r73G4-6-LKOiQyZoi7s&s"
+                              }
+                              alt={name}
+                              size="sm"
+                            />
                             <Typography
                               variant="small"
                               color="blue-gray"
                               className="font-bold"
                             >
-                              {name}
+                              {name}{" "}
+                              <button className="pl-4 text-gray-600">
+                                &nbsp; &nbsp;Follow
+                              </button>
                             </Typography>
                           </div>
                         </td>
@@ -194,63 +168,9 @@ export function Home() {
             </table>
           </CardBody>
         </Card>
-        <Card>
-          <CardHeader
-            floated={false}
-            shadow={false}
-            color="transparent"
-            className="m-0 p-6"
-          >
-            <Typography variant="h6" color="blue-gray" className="mb-2">
-              Orders Overview
-            </Typography>
-            <Typography
-              variant="small"
-              className="flex items-center gap-1 font-normal text-blue-gray-600"
-            >
-              <ArrowUpIcon
-                strokeWidth={3}
-                className="h-3.5 w-3.5 text-green-500"
-              />
-              <strong>24%</strong> this month
-            </Typography>
-          </CardHeader>
-          <CardBody className="pt-0">
-            {ordersOverviewData.map(
-              ({ icon, color, title, description }, key) => (
-                <div key={title} className="flex items-start gap-4 py-3">
-                  <div
-                    className={`relative p-1 after:absolute after:-bottom-6 after:left-2/4 after:w-0.5 after:-translate-x-2/4 after:bg-blue-gray-50 after:content-[''] ${
-                      key === ordersOverviewData.length - 1
-                        ? "after:h-0"
-                        : "after:h-4/6"
-                    }`}
-                  >
-                    {React.createElement(icon, {
-                      className: `!w-5 !h-5 ${color}`,
-                    })}
-                  </div>
-                  <div>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="block font-medium"
-                    >
-                      {title}
-                    </Typography>
-                    <Typography
-                      as="span"
-                      variant="small"
-                      className="text-xs font-medium text-blue-gray-500"
-                    >
-                      {description}
-                    </Typography>
-                  </div>
-                </div>
-              )
-            )}
-          </CardBody>
-        </Card>
+        <div className="mx-auto my-auto content-center text-2xl font-bold">
+          More Features on the Way! 🚘
+        </div>
       </div>
     </div>
   );

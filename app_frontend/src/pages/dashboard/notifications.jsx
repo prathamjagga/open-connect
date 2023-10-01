@@ -21,7 +21,51 @@ export function Notifications() {
     orange: true,
     red: true,
   });
-  const alerts = ["blue", "green", "orange", "red"];
+  const repos = [
+    {
+      heading: "dreamgaussian / dreamgaussian",
+      link: "https://github.com/dreamgaussian/dreamgaussian",
+    },
+    {
+      heading: "microsoft / autogen",
+      link: "https://github.com/microsoft/autogen",
+    },
+    {
+      heading: "airbnb / javascript",
+      link: "https://github.com/airbnb/javascript",
+    },
+    {
+      heading: "microsoft / PowerToys",
+      link: "https://github.com/microsoft/PowerToys",
+    },
+    {
+      heading: "casey / runestone",
+      link: "https://github.com/casey/runestone",
+    },
+  ];
+  const posts = [
+    {
+      heading: "🚀 10 Github repositories to achieve Javascript mastery 🧙‍♂️🪄✨",
+      link: "https://dev.to/novu/10-github-repositories-to-achieve-javascript-mastery-50hk",
+    },
+    {
+      heading: "Handling state between multiple processes with elixir",
+      link: "https://dev.to/cherryramatis/handling-state-between-multiple-instances-with-elixir-4jm1",
+    },
+    {
+      heading:
+        "Contributing to Tech Communities: How Open-Source can land you a job and get you out of the Skill Paradox 💼",
+      link: "https://dev.to/wasp/contributing-to-tech-communities-how-open-source-can-land-you-a-job-and-get-you-out-of-the-skill-paradox-4ejh",
+    },
+    {
+      heading: "React Advanced: Decoupling your components in the right way",
+      link: "React Advanced: Decoupling your components in the right way",
+    },
+    {
+      heading: "Implementing Signals from Scratch",
+      link: "https://dev.to/ratiu5/implementing-signals-from-scratch-3e4c",
+    },
+  ];
 
   return (
     <div className="mx-auto my-20 flex max-w-screen-lg flex-col gap-8">
@@ -37,15 +81,16 @@ export function Notifications() {
           </Typography>
         </CardHeader>
         <CardBody className="flex flex-col gap-4 p-4">
-          {alerts.map((color) => (
+          {repos.map((color) => (
             <Alert
               key={color}
-              show={showAlerts["blue"]}
-              color={"blue"}
+              show={showAlerts["grey"]}
+              color={"grey"}
               dismissible={false}
             >
-              A simple {color} alert with an <a href="#">example link</a>. Give
-              it a click if you like.
+              <a href={color.link} target="_blank" className="underline">
+                {color.heading}
+              </a>
             </Alert>
           ))}
         </CardBody>
@@ -62,15 +107,16 @@ export function Notifications() {
           </Typography>
         </CardHeader>
         <CardBody className="flex flex-col gap-4 p-4">
-          {alerts.map((color) => (
+          {posts.map((color) => (
             <Alert
               key={color}
-              show={showAlertsWithIcon["blue"]}
-              color={"blue"}
+              show={showAlertsWithIcon["green"]}
+              color={"green"}
               dismissible={false}
             >
-              A simple {color} alert with an <a href="#">example link</a>. Give
-              it a click if you like.
+              <a href={color.link} target="_blank" className="underline">
+                {color.heading}
+              </a>
             </Alert>
           ))}
         </CardBody>

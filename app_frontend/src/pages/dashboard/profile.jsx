@@ -33,41 +33,30 @@ export function Profile() {
           <div className="mb-10 flex items-center justify-between gap-6">
             <div className="flex items-center gap-6">
               <Avatar
-                src="/img/bruce-mars.jpeg"
+                src={
+                  localStorage.getItem("photoURL")
+                    ? JSON.parse(localStorage.getItem("photoURL"))
+                    : "/img/bruce-mars.jpeg"
+                }
                 alt="bruce-mars"
                 size="xl"
                 className="rounded-lg shadow-lg shadow-blue-gray-500/40"
               />
               <div>
                 <Typography variant="h5" color="blue-gray" className="mb-1">
-                  Richard Davis
+                  {!localStorage.getItem("name") && "Please log in."}
+                  {localStorage.getItem("name") &&
+                    JSON.parse(localStorage.getItem("name"))}
                 </Typography>
                 <Typography
                   variant="small"
                   className="font-normal text-blue-gray-600"
                 >
-                  CEO / Co-Founder
+                  Contributor
                 </Typography>
               </div>
             </div>
-            <div className="w-96">
-              <Tabs value="app">
-                <TabsHeader>
-                  <Tab value="app">
-                    <HomeIcon className="-mt-1 mr-2 inline-block h-5 w-5" />
-                    App
-                  </Tab>
-                  <Tab value="message">
-                    <ChatBubbleLeftEllipsisIcon className="-mt-0.5 mr-2 inline-block h-5 w-5" />
-                    Message
-                  </Tab>
-                  <Tab value="settings">
-                    <Cog6ToothIcon className="-mt-1 mr-2 inline-block h-5 w-5" />
-                    Settings
-                  </Tab>
-                </TabsHeader>
-              </Tabs>
-            </div>
+            <div className="w-96"></div>
           </div>
           <div className="gird-cols-1 mb-12 grid gap-12 px-4 lg:grid-cols-2 xl:grid-cols-3">
             <div>
@@ -75,36 +64,47 @@ export function Profile() {
                 Platform Settings
               </Typography>
               <div className="flex flex-col gap-12">
-                {platformSettingsData.map(({ title, options }) => (
-                  <div key={title}>
-                    <Typography className="mb-4 block text-xs font-semibold uppercase text-blue-gray-500">
-                      {title}
-                    </Typography>
-                    <div className="flex flex-col gap-6">
-                      {options.map(({ checked, label }) => (
-                        <Switch
-                          key={label}
-                          id={label}
-                          label={label}
-                          defaultChecked={checked}
-                          labelProps={{
-                            className: "text-sm font-normal text-blue-gray-500",
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                ))}
+                {platformSettingsData.map(
+                  ({ title, options }) =>
+                    title != "account" && (
+                      <div key={title}>
+                        <Typography className="mb-4 block text-xs font-semibold uppercase text-blue-gray-500">
+                          {title}
+                        </Typography>
+                        <div className="flex flex-col gap-6">
+                          {options.map(({ checked, label }) => (
+                            <Switch
+                              key={label}
+                              id={label}
+                              label={label}
+                              defaultChecked={checked}
+                              labelProps={{
+                                className:
+                                  "text-sm font-normal text-blue-gray-500",
+                              }}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    )
+                )}
               </div>
             </div>
             <ProfileInfoCard
-              title="Profile Information"
-              description="Hi, I'm Alec Thompson, Decisions: If you can't decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality)."
+              title="My Open Source Story 😅"
+              description={
+                localStorage.getItem("story")
+                  ? JSON.parse(localStorage.getItem("story"))
+                  : "Please log in."
+              }
               details={{
-                "first name": "Alec M. Thompson",
-                mobile: "(44) 123 1234 123",
-                email: "alecthompson@mail.com",
-                location: "USA",
+                Name: localStorage.getItem("name")
+                  ? JSON.parse(localStorage.getItem("name"))
+                  : "Please log in.",
+                email: localStorage.getItem("email")
+                  ? JSON.parse(localStorage.getItem("email"))
+                  : "Please log in.",
+                location: "India",
                 social: (
                   <div className="flex items-center gap-4">
                     <i className="fa-brands fa-facebook text-blue-700" />
@@ -113,102 +113,16 @@ export function Profile() {
                   </div>
                 ),
               }}
-              action={
-                <Tooltip content="Edit Profile">
-                  <PencilIcon className="h-4 w-4 cursor-pointer text-blue-gray-500" />
-                </Tooltip>
-              }
             />
             <div>
-              <Typography variant="h6" color="blue-gray" className="mb-3">
-                Platform Settings
-              </Typography>
-              <ul className="flex flex-col gap-6">
-                {conversationsData.map((props) => (
-                  <MessageCard
-                    key={props.name}
-                    {...props}
-                    action={
-                      <Button variant="text" size="sm">
-                        reply
-                      </Button>
-                    }
-                  />
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="px-4 pb-4">
-            <Typography variant="h6" color="blue-gray" className="mb-2">
-              Projects
-            </Typography>
-            <Typography
-              variant="small"
-              className="font-normal text-blue-gray-500"
-            >
-              Architects design houses
-            </Typography>
-            <div className="mt-6 grid grid-cols-1 gap-12 md:grid-cols-2 xl:grid-cols-4">
-              {projectsData.map(
-                ({ img, title, description, tag, route, members }) => (
-                  <Card key={title} color="transparent" shadow={false}>
-                    <CardHeader
-                      floated={false}
-                      color="gray"
-                      className="mx-0 mt-0 mb-4 h-64 xl:h-40"
-                    >
-                      <img
-                        src={img}
-                        alt={title}
-                        className="h-full w-full object-cover"
-                      />
-                    </CardHeader>
-                    <CardBody className="py-0 px-1">
-                      <Typography
-                        variant="small"
-                        className="font-normal text-blue-gray-500"
-                      >
-                        {tag}
-                      </Typography>
-                      <Typography
-                        variant="h5"
-                        color="blue-gray"
-                        className="mt-1 mb-2"
-                      >
-                        {title}
-                      </Typography>
-                      <Typography
-                        variant="small"
-                        className="font-normal text-blue-gray-500"
-                      >
-                        {description}
-                      </Typography>
-                    </CardBody>
-                    <CardFooter className="mt-6 flex items-center justify-between py-0 px-1">
-                      <Link to={route}>
-                        <Button variant="outlined" size="sm">
-                          view project
-                        </Button>
-                      </Link>
-                      <div>
-                        {members.map(({ img, name }, key) => (
-                          <Tooltip key={name} content={name}>
-                            <Avatar
-                              src={img}
-                              alt={name}
-                              size="xs"
-                              variant="circular"
-                              className={`cursor-pointer border-2 border-white ${
-                                key === 0 ? "" : "-ml-2.5"
-                              }`}
-                            />
-                          </Tooltip>
-                        ))}
-                      </div>
-                    </CardFooter>
-                  </Card>
-                )
-              )}
+              <ProfileInfoCard
+                title="My Experience with Tech 👨‍💻⚙"
+                description={
+                  localStorage.getItem("experience")
+                    ? JSON.parse(localStorage.getItem("experience"))
+                    : "Please log in."
+                }
+              />
             </div>
           </div>
         </CardBody>

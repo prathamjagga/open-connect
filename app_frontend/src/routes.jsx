@@ -6,6 +6,7 @@ import {
   ArrowRightOnRectangleIcon,
   UserPlusIcon,
   ComputerDesktopIcon,
+  SunIcon,
   StarIcon,
 } from "@heroicons/react/24/solid";
 import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
@@ -29,16 +30,16 @@ export const routes = [
         path: "/profile",
         element: <Profile />,
       },
-      // {
-      //   icon: <HomeIcon {...icon} />,
-      //   name: "dashboard",
-      //   path: "/home",
-      //   element: <Home />,
-      // },
+      {
+        icon: <SunIcon {...icon} />,
+        name: "community connect",
+        path: "/people",
+        element: <Home />,
+      },
 
       {
         icon: <BellIcon {...icon} />,
-        name: "Trending in Community ✨",
+        name: "Trending in Open Source ✨",
         path: "/trending",
         element: <Notifications />,
       },
