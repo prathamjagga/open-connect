@@ -16,9 +16,9 @@ The following pages are present in this website:
 
 ## Configure and run on local environment
 
-🚀 Setup Frontend:
-    =>  Head to client/app_frontend and run: "npm i && npm run dev"
-🚀 Setup Backend:
+### 🚀 Setup Frontend:
+    =>  Head to client/app_frontend and run: "npm i && npm run dev" 
+### 🚀 Setup Backend:
     =>  Head to server and run: "npm i && node index.js"
 
 ## Contribution Guide
