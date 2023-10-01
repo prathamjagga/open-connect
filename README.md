@@ -1,5 +1,5 @@
 ##       OpenExplore  🌐🧠
-The website is created for open source enthusiasts.Collaboration is at the heart in open source community. Thsi website will help you to  find like-minded individuals eager to connect, share knowledge, and work together on exciting projects. We firmly believe that the best solutions emerge when brilliant minds come together, and that's exactly what we foster here.
+The website is created for open source enthusiasts.Collaboration is  the heart in open source community. This website will help you to  find like-minded individuals eager to connect, share knowledge, and work together on exciting projects. We firmly believe that the best solutions emerge when brilliant minds come together, and that's exactly what we foster here.
 
 ## Yes, we are 100% percent Open-Source 🌟💯
 Our project uses everything open source and available to the community.
