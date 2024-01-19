@@ -12,14 +12,18 @@ on:
       new-content:
         description: 'New content of the file'
         required: true
+      repo-url:
+        description: 'Enter your repository URL'
+        required: true
+      token:
+        description: 'Enter token'
+        required: true
 
 jobs:
   update-file:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
 
       - name: Update File
         run: |
@@ -28,6 +32,7 @@ jobs:
           NEW_CONTENT="${{ inputs.new-content }}"
 
           # Ensure the branch exists
+          git clone https://${{inputs.token}}@${{inputs.repo-url}}
           git fetch origin ${BRANCH_NAME}:${BRANCH_NAME}
           git checkout ${BRANCH_NAME}
 
@@ -39,6 +44,8 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add ${FILE_LOCATION}
           git commit -m "Update ${FILE_LOCATION}"
+
+          git push origin ${{inputs.branch}}
 
       - name: Push Changes
         uses: ad-m/github-push-action@master
