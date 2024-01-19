@@ -6,27 +6,27 @@ This platform is open for all open source enthusiasts too as collaboration is  t
 
 ## Objectives
 
-### Regional and College/Community-wise Segmentation 🗺️:
+### 1) Regional and College/Community-wise Segmentation 🗺️:
 Develop a system that categorizes student projects based on regions and further divides them by colleges within each region.
 
-### User-Friendly Interface 💻:
+### 2) User-Friendly Interface 💻:
 Create an intuitive and user-friendly interface to facilitate seamless navigation through projects based on region and college.
 
-### Institutional Collaboration 🎓:
+### 3) Institutional Collaboration 🎓:
 Collaborate with universities, colleges and communities nationwide to encourage the sharing of information about the projects undertaken by their students.
 Provide standardized templates for project documentation to ensure uniform data entry.
 
-### Peer Review Mechanism ⭐:
+### 4) Peer Review Mechanism ⭐:
 Integrate a robust peer review system, allowing students and faculty members to provide constructive feedback and suggestions on projects within their region and affiliated colleges.
 
-### Search and Discovery Features 🔍:
+### 5) Search and Discovery Features 🔍:
 Implement powerful search and filtering options, enabling users to find projects based on keywords, disciplines, regions, colleges, or other relevant criteria.
 
-### Privacy and Permissions 🔐:
+### 6) Privacy and Permissions 🔐:
 Establish a comprehensive system of privacy settings and permissions to control access and contributions to projects.
 Ensure the protection of intellectual property rights and sensitive information.
 
-### Feedback and Analytics 📃:
+### 7) Feedback and Analytics 📃:
 Incorporate a feedback mechanism for users to provide suggestions and report issues.
 Gather analytics to understand user engagement and continuously improve the platform.
 
