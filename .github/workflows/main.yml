@@ -1,0 +1,47 @@
+name: Update File
+
+on:
+  workflow_dispatch:
+    inputs:
+      file-location:
+        description: 'Location of the file in the GitHub repository'
+        required: true
+      branch:
+        description: 'Branch to update'
+        required: true
+      new-content:
+        description: 'New content of the file'
+        required: true
+
+jobs:
+  update-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Update File
+        run: |
+          FILE_LOCATION=${{ inputs.file-location }}
+          BRANCH_NAME=${{ inputs.branch }}
+          NEW_CONTENT="${{ inputs.new-content }}"
+
+          # Ensure the branch exists
+          git fetch origin ${BRANCH_NAME}:${BRANCH_NAME}
+          git checkout ${BRANCH_NAME}
+
+          # Update the file content
+          echo "${NEW_CONTENT}" > ${FILE_LOCATION}
+
+          # Commit the changes
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add ${FILE_LOCATION}
+          git commit -m "Update ${FILE_LOCATION}"
+
+      - name: Push Changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: ${{ inputs.branch }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
