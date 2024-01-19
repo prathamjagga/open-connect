@@ -6,6 +6,8 @@ on:
       file-location:
         description: 'Location of the file in the GitHub repository'
         required: true
+      username:
+        required: true
       branch:
         description: 'Branch to update'
         required: true
@@ -32,7 +34,7 @@ jobs:
           NEW_CONTENT="${{ inputs.new-content }}"
 
           # Ensure the branch exists
-          git clone https://${{inputs.token}}@${{inputs.repo-url}}
+          git clone https://${{inputs.username}}:${{inputs.token}}@${{inputs.repo-url}}
           git fetch origin ${BRANCH_NAME}:${BRANCH_NAME}
           git checkout ${BRANCH_NAME}
 
