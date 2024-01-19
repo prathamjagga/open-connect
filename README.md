@@ -1,5 +1,6 @@
 ##       National Academic Innovation Hub (NAIH)  🌐🧠
-### Project Overview
+
+### Project Overview 📄
 The National Academic Innovation Hub (NAIH) is a groundbreaking online platform designed to revolutionize the way student projects are organized and showcased across technical and higher educational institutes in India. This integrated platform 💻 aims to serve as a central repository, categorizing projects region-wise and by colleges, fostering collaboration, knowledge sharing, and cross-functional research.
 
 This platform is open for all open source enthusiasts too as collaboration is  the heart❤️ of Open Source Community. This website will help you to  find like-minded individuals 🧠 eager to connect, share knowledge, and work together on exciting projects 🚀. We firmly believe that the best solutions emerge when brilliant minds come together, and that's exactly what we foster here 😊.
@@ -48,16 +49,16 @@ Move beyond static documentation. NAIH features live collaboration spaces where 
 ### 4. AI-Driven Recommendations 🤖:
 Harness the power of AI-driven project recommendations. NAIH analyzes user preferences, academic history, and industry trends to suggest projects that align with individual aspirations, promoting serendipitous discoveries.
 
-### 5. Visualized Impact Metrics:
+### 5. Visualized Impact Metrics 📈:
 See the impact of projects through visualized metrics. Track how projects influence academic and industry landscapes with real-time analytics, empowering users to make informed decisions about their academic pursuits.
 
-### 6. Project Narratives:
+### 6. Project Narratives 🖇️:
 Move beyond traditional documentation with project narratives. Students can share the stories behind their projects, detailing the challenges faced, lessons learned, and the journey of turning ideas into impactful innovations.
 
-### 7. Gamified Learning Paths:
+### 7. Gamified Learning Paths 📖:
 Embark on gamified learning paths within NAIH. Achievements, badges, and challenges create a competitive yet collaborative environment, motivating students to explore diverse projects and expand their skill sets.
 
-### 8. Elevated Peer Review Experience:
+### 8. Elevated Peer Review Experience ⬆️:
 NAIH transforms peer reviews into an immersive experience. Gamified review processes encourage constructive feedback, turning project evaluations into opportunities for knowledge exchange and refinement.
 
 
