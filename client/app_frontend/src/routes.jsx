@@ -18,6 +18,7 @@ import ProjectView from "./pages/ProjectView";
 import ImageGrid from "./pages/GithubEcosystem";
 import AutoFix from "./pages/AutoFix";
 import IssueForum from "./pages/issueForum";
+import Members from "./pages/dashboard/Members";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -74,6 +75,11 @@ export const routes = [
         name: "AutoFix",
         path: "/autofix",
         element: <AutoFix />,
+      },
+      {
+        name: "Hacker Profile",
+        path: "/member-profile",
+        element: <Members />,
       },
     ],
   },
