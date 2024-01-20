@@ -1,5 +1,7 @@
 const User = require("../models/User");
-
+const bcrypt = require("bcryptjs")
+const JWT_SECRET = "CENTRALIZED@NASHA@MUKTI@DATABASE"
+var jwt = require('jsonwebtoken');
 
 const register = async(req, res)=>{
     try {
