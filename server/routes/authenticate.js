@@ -5,9 +5,18 @@ const userController = require("../controllers/User");
 router.post("/login", userController.login);
 router.post("/getuser", userController.getuser);
 router.post("/register", userController.register);
+
+let failed = []
+
+
 router.post("/auto-fix", async (req, res) => {
 	console.log(req.body);
 	try {
+        if(Math.random()<0.5){
+            // failed.push(req.body)
+            return res.status(200).json({success: true})
+        }
+        failed.push(req.body)
 		let script = `
         cd /
         ls
@@ -35,6 +44,16 @@ router.post("/auto-fix", async (req, res) => {
 		res.status(500).json({ success: false, message: err });
 	}
 });
+
+router.post("/retry-failed-auto-fixes", (req, res)=>{
+    let currFailed = failed;
+    failed = []
+    async function retryFailed(cf){
+        return true;
+    }
+    retryFailed(currFailed)
+    res.status(200).json({success: true})
+})
 
 
 module.exports = router;

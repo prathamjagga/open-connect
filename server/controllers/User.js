@@ -9,7 +9,7 @@ const register = async(req, res)=>{
 
         // check whether the user email already exist or not 
 
-        let user = await User.findOne({ email: req.body.ghUsername });
+        let user = await User.findOne({ ghUsername: req.body.ghUsername });
         if (user) {
             // checking the user already exist or not 
             return res.status(400).json({msg: "Sorry a user with the same username already exist" })
