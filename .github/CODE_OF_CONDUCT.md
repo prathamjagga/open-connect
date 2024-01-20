@@ -1,6 +1,6 @@
 ## Code of Conduct
 
-This code of conduct outlines the expected behavior of all participants in the OpenExplore project. We are committed to creating a welcoming and inclusive environment where everyone feels comfortable participating.
+This code of conduct outlines the expected behavior of all participants in the OpenConnect project. We are committed to creating a welcoming and inclusive environment where everyone feels comfortable participating.
 
 **Principles**
 
