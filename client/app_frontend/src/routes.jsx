@@ -17,6 +17,7 @@ import Intro from "@/Intro";
 import ProjectView from "./pages/ProjectView";
 import ImageGrid from "./pages/GithubEcosystem";
 import AutoFix from "./pages/AutoFix";
+import IssueForum from "./pages/issueForum";
 
 const icon = {
   className: "w-5 h-5 text-inherit",

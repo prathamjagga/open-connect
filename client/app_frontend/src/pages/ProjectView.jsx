@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProjectView = ({}) => {
+  const navigate = useNavigate();
   const [projectIssues, setProjectIssues] = useState(["a", "b"]);
   const [projectDescription, setProjectDescription] = useState(
     "desfdwjfwefew dpofuwepufpoweufpuwe"
@@ -8,9 +10,49 @@ const ProjectView = ({}) => {
   const [stars, setStars] = useState(32);
   const [forks, setForks] = useState(32);
   const [issues, setIssues] = useState(["a", "b"]);
+
+  useEffect(() => {
+    async function getGitHubIssues(owner, repo) {
+      const apiUrl = `https://api.github.com/repos/${owner}/${repo}/issues`;
+
+      try {
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+          throw new Error(
+            `Failed to fetch issues: ${response.status} ${response.statusText}`
+          );
+        }
+
+        const x = await response.json();
+
+        setProjectIssues(x);
+        return issues;
+      } catch (error) {
+        console.error("Error:", error.message);
+        throw error;
+      }
+    }
+
+    const owner = "Netflix";
+    const repo = "conductor";
+
+    getGitHubIssues(owner, repo);
+
+    async function getDesc(owner, repo) {
+      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
+
+      const data = await res.json();
+
+      setProjectDescription(data.description);
+    }
+
+    getDesc(owner, repo);
+  }, []);
+
   return (
-    <div className="mx-auto mt-8 max-w-xl rounded-md bg-white p-6 shadow-md">
-      <h1 className="mb-4 text-2xl font-bold">Project View</h1>
+    <div className="mx-auto mt-8 max-w-4xl rounded-md bg-white p-6 shadow-md">
+      <h1 className="mb-4 text-2xl font-bold">Project View - Conductor</h1>
 
       <button
         className="rounded-md bg-blue-500 py-2 px-4 text-white hover:bg-blue-600 focus:outline-none"
@@ -32,7 +74,7 @@ const ProjectView = ({}) => {
           Forks: {forks}
         </span>
         <span className="rounded-md bg-blue-500 py-1 px-2 text-white">
-          Issues: {issues.length}
+          Issues: {projectIssues.length}
         </span>
       </div>
 
@@ -41,7 +83,19 @@ const ProjectView = ({}) => {
         <ul className="list-disc pl-4">
           {projectIssues.map((issue, index) => (
             <li key={index} className="text-gray-700">
-              {issue}
+              <a
+                style={{ color: "blue", textDecoration: "underline" }}
+                href={issue.html_url}
+              >
+                {issue.title}
+              </a>
+              <button
+                className="btn float-right"
+                onClick={() => navigate("/issue-forum/" + issue.number)}
+              >
+                {" "}
+                Go to Discussion ✅ (<bold>PRO</bold>)
+              </button>
             </li>
           ))}
         </ul>
