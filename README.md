@@ -1,17 +1,17 @@
-##       National Academic Innovation Hub (NAIH)  🌐🧠
+##       Open Connect  🌐🧠
 
 ### Project Overview 📄
-The National Academic Innovation Hub (NAIH) is a groundbreaking online platform designed to revolutionize the way student projects are organized and showcased across technical and higher educational institutes in India. This integrated platform 💻 aims to serve as a central repository, categorizing projects region-wise and by colleges, fostering collaboration, knowledge sharing, and cross-functional research.
+"Open Connect" is a groundbreaking online platform designed to revolutionize the way community members projects are organized and showcased across technical and higher educational institutes in India. This integrated platform 💻 aims to serve as a central repository, categorizing projects community-wise, fostering collaboration, knowledge sharing, and cross-functional research.
 
 This platform is open for all open source enthusiasts too as collaboration is  the heart❤️ of Open Source Community. This website will help you to  find like-minded individuals 🧠 eager to connect, share knowledge, and work together on exciting projects 🚀. We firmly believe that the best solutions emerge when brilliant minds come together, and that's exactly what we foster here 😊.
 
 ## Objectives
 
-### 1) Regional and College/Community-wise Segmentation 🗺️:
-Develop a system that categorizes student projects based on regions and further divides them by colleges within each region.
+### 1) Community-wise Segmentation 🗺️:
+Develop a system that categorizes student projects based on communities and its members.
 
 ### 2) User-Friendly Interface 💻:
-Create an intuitive and user-friendly interface to facilitate seamless navigation through projects based on region and college.
+Create an intuitive and user-friendly interface to facilitate seamless navigation through projects based on communities and institute.
 
 ### 3) Institutional Collaboration 🎓:
 Collaborate with universities, colleges and communities nationwide to encourage the sharing of information about the projects undertaken by their students.
