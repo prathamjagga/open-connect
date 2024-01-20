@@ -33,7 +33,7 @@ export default function Signup() {
 			localStorage.setItem("openSourceStory", details.openSourceStory);
 			localStorage.setItem("GithubUserName", details.GithubUserName);
 			localStorage.setItem("UrlForProfilePic", details.UrlForProfilePic);
-			alert("hlw");
+			// alert("hlw");
 			navigate("/auth/sign-in");
 		}
 	};

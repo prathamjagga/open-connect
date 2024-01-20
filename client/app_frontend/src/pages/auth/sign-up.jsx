@@ -134,7 +134,7 @@ export function SignUp() {
                   const json = await response.json();
                   // console.log(json)
 
-                  alert(response.status);
+                  // alert(response.status);
                   alert("Signed up successfully now you can log in");
                   navigate("/auth/sign-in");
 
@@ -167,7 +167,7 @@ export function SignUp() {
                     if (response.status === 500) {
                       alert("Please fill the required details.");
                     } else {
-                      alert(json.msg);
+                      // alert(json.msg);
                     }
                   }
                 }

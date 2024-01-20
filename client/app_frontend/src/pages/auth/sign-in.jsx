@@ -78,12 +78,12 @@ export function SignIn() {
                   const json = await response.json();
                   console.log(json);
 
-                  alert(response.status);
+                  // alert(response.status);
                   if (response.status === 500 || response.status === 400) {
                     if (response.status === 500) {
                       alert("Please fill the required details.");
                     } else {
-                      alert(json.msg);
+                      // alert(json.msg);
                     }
                   } else {
                     localStorage.setItem("token", "toke123");

@@ -77,7 +77,7 @@ export function Profile() {
   });
 
   const fetchTheData = async () => {
-    alert("Fetching data...");
+    // alert("Fetching data...");
 
     try {
       const port = "https://naih-frontend-production.up.railway.app";
@@ -94,7 +94,7 @@ export function Profile() {
       const json = await response.json();
       console.log(json);
 
-      alert(response.status);
+      // alert(response.status);
       if (response.status === 500 || response.status === 400) {
         alert("Can not fetch data");
       } else {
