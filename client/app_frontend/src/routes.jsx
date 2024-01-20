@@ -14,6 +14,8 @@ import Matching from "@/pages/Matching";
 import Analyse from "@/pages/Analyse";
 import { SignIn, SignUp } from "@/pages/auth";
 import Intro from "@/Intro";
+import ProjectView from "./pages/ProjectView";
+import ImageGrid from "./pages/GithubEcosystem";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -26,10 +28,16 @@ export const routes = [
     pages: [
       {
         icon: <UserCircleIcon {...icon} />,
-        name: "profile",
-        path: "/profile",
+        name: "Community Profile",
+        path: "/community-profile",
         element: <Profile />,
       },
+      {
+        name: "Project",
+        path: "/project",
+        element: <ProjectView />,
+      },
+
       {
         icon: <SunIcon {...icon} />,
         name: "community connect",
@@ -54,6 +62,11 @@ export const routes = [
         name: "Your Github Stats",
         path: "/analyse",
         element: <Analyse />,
+      },
+      {
+        name: "Github Ecosystem Tools",
+        path: "/github-ecosystem",
+        element: <ImageGrid />,
       },
     ],
   },
