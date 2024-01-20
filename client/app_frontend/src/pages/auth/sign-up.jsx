@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {
   Card,
@@ -19,6 +19,8 @@ export function SignUp() {
   const [story, setStory] = useState(" ");
   const [ghUsername, setGH] = useState(" ");
   const [photoUrl, setURL] = useState(" ");
+
+  const navigate = useNavigate();
   return (
     <>
       <img
@@ -96,28 +98,24 @@ export function SignUp() {
                   story,
                   photoUrl,
                 };
-                fetch(
-                  "https://hf-backend-7fmd.onrender.com/api/profiles/addProfile",
-                  {
-                    // Adding method type
-                    method: "POST",
 
-                    // Adding body or contents to send
-                    body: JSON.stringify(data),
+                
+                
+                  if(data.name ==="" || data.email === "" || data.password === "" || data.experience === "" || data.story === "" || data.ghUsername === "" || data.photoUrl === "") {
+                    alert("Please enter the required details")
+                  } else {
+                    
+                    localStorage.setItem("name" , JSON.stringify(data.name));
+                    localStorage.setItem("email" , JSON.stringify(data.email));
+                    localStorage.setItem("password" , JSON.stringify(data.password));
+                    localStorage.setItem("DevExp" , JSON.stringify(data.experience));
+                    localStorage.setItem("story" , JSON.stringify(data.story));
+                    localStorage.setItem("ghUsername" , JSON.stringify(data.ghUsername));
+                    localStorage.setItem("photoUrl" , JSON.stringify(data.photoUrl));
 
-                    // Adding headers to the request
-                    headers: {
-                      "Content-type": "application/json; charset=UTF-8",
-                    },
+                    alert("Great! Signup Successfully. Now please Sign in. ")
+                    navigate("/auth/sign-in");
                   }
-                )
-                  // Converting to JSON
-                  .then((response) => response.json())
-
-                  // Displaying results to console
-                  .then((json) => {
-                    alert("Signed up successfully. Please Sign in.");
-                  });
               }}
             >
               Sign Up

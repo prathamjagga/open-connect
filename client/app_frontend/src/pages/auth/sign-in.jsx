@@ -1,3 +1,5 @@
+
+import React, { useState }  from "react";
 import { Link } from "react-router-dom";
 import {
   Card,
@@ -9,11 +11,14 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
-import { useState } from "react";
-
+import {useNavigate} from "react-router-dom"
 export function SignIn() {
+
+  const navigate = useNavigate();
   const [ghUsername, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+	
   return (
     <>
       <img
@@ -55,42 +60,49 @@ export function SignIn() {
             <Button
               variant="gradient"
               fullWidth
-              onClick={async () => {
-                console.log("click");
-                fetch(
-                  "https://hf-backend-7fmd.onrender.com/api/profiles/get-one/" +
-                    ghUsername
-                )
-                  // Converting received data to JSON
-                  .then((response) => response.json())
-                  .then((json) => {
-                    console.log(json);
-                    let data = json.profile[0];
+              onClick={() => {
+                if(ghUsername === "" || password === "") {
+                  alert("Please enter the required details")
+                } else {
+                  console.log("click");
+                  localStorage.setItem("ghUsername", JSON.stringify(ghUsername))
+                  navigate("/dashboard/profile")
+                }
+                
+                // fetch(
+                //   "https://hf-backend-7fmd.onrender.com/api/profiles/get-one/" +
+                //     ghUsername
+                // )
+                //   // Converting received data to JSON
+                //   .then((response) => response.json())
+                //   .then((json) => {
+                //     console.log(json);
+                //     let data = json.profile[0];
 
-                    localStorage.setItem("name", JSON.stringify(data.name));
-                    localStorage.setItem("email", JSON.stringify(data.email));
-                    localStorage.setItem(
-                      "password",
-                      JSON.stringify(data.password)
-                    );
-                    localStorage.setItem(
-                      "experience",
-                      JSON.stringify(data.experience)
-                    );
-                    localStorage.setItem("story", JSON.stringify(data.story));
-                    localStorage.setItem(
-                      "ghUsername",
-                      JSON.stringify(data.ghUsername)
-                    );
-                    localStorage.setItem(
-                      "photoURL",
-                      JSON.stringify(data.photoURL)
-                    );
+                //     localStorage.setItem("name", JSON.stringify(data.name));
+                //     localStorage.setItem("email", JSON.stringify(data.email));
+                //     localStorage.setItem(
+                //       "password",
+                //       JSON.stringify(data.password)
+                //     );
+                //     localStorage.setItem(
+                //       "experience",
+                //       JSON.stringify(data.experience)
+                //     );
+                //     localStorage.setItem("story", JSON.stringify(data.story));
+                //     localStorage.setItem(
+                //       "ghUsername",
+                //       JSON.stringify(data.ghUsername)
+                //     );
+                //     localStorage.setItem(
+                //       "photoURL",
+                //       JSON.stringify(data.photoURL)
+                //     );
 
-                    alert(
-                      json.profile[0].name + ", You're signed in successfully!"
-                    );
-                  });
+                //     alert(
+                //       json.profile[0].name + ", You're signed in successfully!"
+                //     );
+                //   });
               }}
             >
               Sign In
@@ -104,7 +116,7 @@ export function SignIn() {
                   color="blue"
                   className="ml-1 font-bold"
                 >
-                  Sign up
+                  Sign In
                 </Typography>
               </Link>
             </Typography>
