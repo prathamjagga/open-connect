@@ -22,7 +22,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
     <aside
       className={`${sidenavTypes[sidenavType]} ${
         openSidenav ? "translate-x-0" : "-translate-x-80"
-      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0`}
+      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 overflow-y-scroll rounded-xl transition-transform duration-300 xl:translate-x-0`}
     >
       <div
         className={`relative border-b ${
@@ -71,7 +71,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
 
               return (
                 <>
-                  <li key={name}>
+                  <li key={name} className="">
                     <NavLink to={`/${layout}${path}`}>
                       {({ isActive }) => (
                         <Button
@@ -89,7 +89,14 @@ export function Sidenav({ brandImg, brandName, routes }) {
                           {icon}
                           <Typography
                             color="inherit"
-                            className="font-medium capitalize"
+                            className={`h-6 font-medium capitalize ${
+                              name ==
+                                "Monitor your Application Using Orkes Conductor 🚀☁️" ||
+                              name ==
+                                "Find Ideal Mentors with Taipy and AI ✨🤖"
+                                ? "h-10"
+                                : ""
+                            }`}
                           >
                             {name}
                           </Typography>

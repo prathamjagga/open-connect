@@ -27,6 +27,7 @@ const ProjectView = ({}) => {
         const x = await response.json();
 
         setProjectIssues(x);
+
         return issues;
       } catch (error) {
         console.error("Error:", error.message);
@@ -45,6 +46,8 @@ const ProjectView = ({}) => {
       const data = await res.json();
 
       setProjectDescription(data.description);
+      setForks(data.forks);
+      setStars(data.stargazers_count);
     }
 
     getDesc(owner, repo);

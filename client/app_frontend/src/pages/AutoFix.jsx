@@ -27,7 +27,7 @@ const UpdateCode = () => {
     try {
       // Make API call
       const response = await fetch(
-        "http://localhost:3000/authenticate/auto-fix",
+        "https://naih-frontend-production.up.railway.app/authenticate/auto-fix",
         {
           method: "POST",
           headers: {

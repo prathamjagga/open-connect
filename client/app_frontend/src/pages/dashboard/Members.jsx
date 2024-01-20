@@ -58,7 +58,7 @@ export function Profile() {
     alert("Fetching data...");
 
     try {
-      const port = "http://localhost:3000";
+      const port = "https://naih-frontend-production.up.railway.app";
       const response = await fetch(`${port}/authenticate/getuser`, {
         method: "POST",
         headers: {
@@ -269,7 +269,7 @@ export function Profile() {
 
       {/* Communities followed by the person present  */}
 
-      <div className="mx-auto my-20 flex max-w-screen-lg flex-col gap-8">
+      <div className="mx-auto  flex max-w-screen-lg flex-col gap-8">
         <Card>
           <CardHeader
             color="transparent"
@@ -301,7 +301,7 @@ export function Profile() {
 
       {/* Project Developed */}
 
-      <div className="mx-auto my-20 flex max-w-screen-lg flex-col gap-8">
+      <div className="mx-auto  flex max-w-screen-lg flex-col gap-8">
         <Card>
           <CardHeader
             color="transparent"

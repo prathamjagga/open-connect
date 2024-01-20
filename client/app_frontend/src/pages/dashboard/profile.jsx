@@ -1,4 +1,4 @@
-import React ,{ useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   Card,
@@ -23,7 +23,6 @@ import {
 import { Link } from "react-router-dom";
 import { ProfileInfoCard, MessageCard } from "@/widgets/cards";
 import { platformSettingsData, conversationsData, projectsData } from "@/data";
-
 
 import { Alert } from "@material-tailwind/react";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
@@ -64,98 +63,87 @@ export function Profile() {
 
   var name = "";
 
-  const [repos, setRepos] = useState([{email:"", name:"", }])
-  useEffect(()=>{
+  const [repos, setRepos] = useState([{ email: "", name: "" }]);
+  useEffect(() => {
     fetchTheData();
-  }, [])
+  }, []);
 
-  
-  const [data, setdata] = useState({email: "",   name: "",
-                                    experience: "",
-                                       story: "",
-                                      photoURL: ""})
-  
-
+  const [data, setdata] = useState({
+    email: "",
+    name: "",
+    experience: "",
+    story: "",
+    photoURL: "",
+  });
 
   const fetchTheData = async () => {
     alert("Fetching data...");
-  
+
     try {
+      const port = "https://naih-frontend-production.up.railway.app";
+      const response = await fetch(`${port}/authenticate/getuser`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ghUsername: JSON.parse(localStorage.getItem("ghUsername")),
+        }),
+      });
 
-      const port = "http://localhost:3000";
-                  const response = await fetch(`${port}/authenticate/getuser`, {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                      ghUsername: JSON.parse(localStorage.getItem("ghUsername")),
-                    }),
-                  });
+      const json = await response.json();
+      console.log(json);
 
-                  const json = await response.json();
-                  console.log(json)
-            
-                  alert(response.status)
-                  if (response.status === 500 || response.status === 400) {
-                    
-                      alert("Can not fetch data")
-                    
-                  } else {
-                 
-                      console.log("I found it ")
-                      data.email = json.email;
-                      data.experience = json.experience;
-                      data.photoURL = json.photoURL;
-                      data.story = json.story;
-                      data.name = data.name;
-                  }
-        var username = await JSON.parse(localStorage.getItem("ghUsername"));
+      alert(response.status);
+      if (response.status === 500 || response.status === 400) {
+        alert("Can not fetch data");
+      } else {
+        console.log("I found it ");
+        data.email = json.email;
+        data.experience = json.experience;
+        data.photoURL = json.photoURL;
+        data.story = json.story;
+        data.name = data.name;
+      }
+      var username = await JSON.parse(localStorage.getItem("ghUsername"));
 
       // Fetch user information
-      const userResponse = await fetch(`https://api.github.com/users/${username}`);
+      const userResponse = await fetch(
+        `https://api.github.com/users/${username}`
+      );
       const userData = await userResponse.json();
       console.log("User Data:", userData);
-      name += userData.name
-    
+      name += userData.name;
+
       // Fetch user's repositories
-      const reposResponse = await fetch(`https://api.github.com/users/${username}/repos`);
+      const reposResponse = await fetch(
+        `https://api.github.com/users/${username}/repos`
+      );
       const reposData = await reposResponse.json();
       console.log("Repositories Data:", reposData);
-  
+
       // Filter repositories to include only those with unique ids
       const uniqueRepos = reposData.filter(
         (repo) => !repos.some((existingRepo) => existingRepo.id === repo.id)
       );
-  
+
       // Map unique repositories to the desired format
       const repoObjects = uniqueRepos.map((repo) => ({
         id: repo.id, // Make sure to include the unique id
         heading: repo.full_name,
         link: repo.html_url,
       }));
-      
-     
+
       // Update the state using the functional form of setRepos
       setRepos((prevRepos) => [...prevRepos, ...repoObjects]);
-  
+
       console.log(typeof repos);
-
-      
-
-
-
-
 
       // Now you can use userData and repoObjects as needed in your application
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-
-
-
-
 
   //extra code for students list
   const [showAlerts, setShowAlerts] = React.useState({
@@ -190,9 +178,8 @@ export function Profile() {
               />
               <div>
                 <Typography variant="h5" color="blue-gray" className="mb-1">
-                  
-                {JSON.parse(localStorage.getItem("ghUsername"))
-                }  {/* {name === "" && "Please log in."}
+                  {JSON.parse(localStorage.getItem("ghUsername"))}{" "}
+                  {/* {name === "" && "Please log in."}
                   {localStorage.getItem("name") &&
                     JSON.parse(localStorage.getItem("name"))} */}
                 </Typography>
@@ -250,14 +237,12 @@ export function Profile() {
             </div> */}
             <ProfileInfoCard
               title="Description 💬📝"
-              description={
-                (data.story === "" ? "" : data.story) 
-              }
+              description={data.story === "" ? "" : data.story}
               details={{
                 Name: localStorage.getItem("ghUsername")
                   ? JSON.parse(localStorage.getItem("ghUsername"))
                   : "Please log in.",
-                email: (data.email === "" ? "" : data.email) ,
+                email: data.email === "" ? "" : data.email,
                 location: "India",
                 social: (
                   <div className="flex items-center gap-4">
@@ -272,17 +257,13 @@ export function Profile() {
             <div>
               <ProfileInfoCard
                 title="Tech Expertise 👨‍💻⚙"
-                description={
-                  (data.experience === "" ? "" : data.experience)
-                }
+                description={data.experience === "" ? "" : data.experience}
               />
             </div>
             <div>
               <ProfileInfoCard
                 title="Values ✨"
-                description={
-                  (data.experience === "" ? "" : data.experience)
-                }
+                description={data.experience === "" ? "" : data.experience}
               />
             </div>
           </div>

@@ -100,56 +100,74 @@ export function SignUp() {
                   photoUrl,
                 };
 
-                
-                
-                  if(data.name ==="" || data.email === "" || data.password === "" || data.experience === "" || data.story === "" || data.ghUsername === "" || data.photoUrl === "") {
-                    alert("Please enter the required details")
-                  } else {
-                    var port = "http://localhost:3000"
-                    const response = await fetch(`${port}/authenticate/register`, {
+                if (
+                  data.name === "" ||
+                  data.email === "" ||
+                  data.password === "" ||
+                  data.experience === "" ||
+                  data.story === "" ||
+                  data.ghUsername === "" ||
+                  data.photoUrl === ""
+                ) {
+                  alert("Please enter the required details");
+                } else {
+                  var port = "https://naih-frontend-production.up.railway.app";
+                  const response = await fetch(
+                    `${port}/authenticate/register`,
+                    {
                       method: "POST",
                       headers: {
                         "Content-Type": "application/json",
                       },
                       body: JSON.stringify({
-                        name:name,
+                        name: name,
                         ghUsername: ghUsername,
                         password: password,
-	                      email:email, 
-                        experience:experience,
-	                      story:story,
-                        photoURL:photoUrl
+                        email: email,
+                        experience: experience,
+                        story: story,
+                        photoURL: photoUrl,
                       }),
-                    });
-                    
-                    const json = await response.json();
-                    // console.log(json)
-                    
-                    alert(response.status)
-                    if ((Number)(response.status) == 200) {
-                     
-                      alert(`Great ${credentials.name}, You Register successfully`)
-                      localStorage.setItem("name" , JSON.stringify(data.name));
-                      localStorage.setItem("email" , JSON.stringify(data.email));
-                      localStorage.setItem("password" , JSON.stringify(data.password));
-                      localStorage.setItem("DevExp" , JSON.stringify(data.experience));
-                      localStorage.setItem("story" , JSON.stringify(data.story));
-                      localStorage.setItem("ghUsername" , JSON.stringify(data.ghUsername));
-                      localStorage.setItem("photoUrl" , JSON.stringify(data.photoUrl));
-                      
-                      navigate("/auth/sign-in"); 
-                      
-                    } else {
-                      if (response.status === 500) {
-                        alert("Please fill the required details.");
-                      } else {
-                        alert(json.msg);
-                      }
                     }
-                    
-                  
-                    
+                  );
+
+                  const json = await response.json();
+                  // console.log(json)
+
+                  alert(response.status);
+                  if (Number(response.status) == 200) {
+                    alert(
+                      `Great ${credentials.name}, You Register successfully`
+                    );
+                    localStorage.setItem("name", JSON.stringify(data.name));
+                    localStorage.setItem("email", JSON.stringify(data.email));
+                    localStorage.setItem(
+                      "password",
+                      JSON.stringify(data.password)
+                    );
+                    localStorage.setItem(
+                      "DevExp",
+                      JSON.stringify(data.experience)
+                    );
+                    localStorage.setItem("story", JSON.stringify(data.story));
+                    localStorage.setItem(
+                      "ghUsername",
+                      JSON.stringify(data.ghUsername)
+                    );
+                    localStorage.setItem(
+                      "photoUrl",
+                      JSON.stringify(data.photoUrl)
+                    );
+
+                    navigate("/auth/sign-in");
+                  } else {
+                    if (response.status === 500) {
+                      alert("Please fill the required details.");
+                    } else {
+                      alert(json.msg);
+                    }
                   }
+                }
               }}
             >
               Sign Up

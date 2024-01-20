@@ -1,5 +1,4 @@
-
-import React, { useState }  from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Card,
@@ -11,14 +10,12 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 export function SignIn() {
-
   const navigate = useNavigate();
   const [ghUsername, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-	
   return (
     <>
       <img
@@ -61,12 +58,12 @@ export function SignIn() {
               variant="gradient"
               fullWidth
               onClick={async () => {
-               
-                if(ghUsername === "" || password === "") {
-                  alert("Please enter the required details")
+                if (ghUsername === "" || password === "") {
+                  alert("Please enter the required details");
                 } else {
                   console.log("click");
-                  const port = "http://localhost:3000";
+                  const port =
+                    "https://naih-frontend-production.up.railway.app";
                   const response = await fetch(`${port}/authenticate/login`, {
                     method: "POST",
                     headers: {
@@ -79,9 +76,9 @@ export function SignIn() {
                   });
 
                   const json = await response.json();
-                  console.log(json)
-            
-                  alert(response.status)
+                  console.log(json);
+
+                  alert(response.status);
                   if (response.status === 500 || response.status === 400) {
                     if (response.status === 500) {
                       alert("Please fill the required details.");
@@ -89,12 +86,15 @@ export function SignIn() {
                       alert(json.msg);
                     }
                   } else {
-                    localStorage.setItem("token", "toke123")
+                    localStorage.setItem("token", "toke123");
                     alert(`Great You Logged successfully`);
-                    localStorage.setItem("ghUsername", JSON.stringify(ghUsername));
-                    navigate("/dashboard/member-profile")
-                  } 
-                } 
+                    localStorage.setItem(
+                      "ghUsername",
+                      JSON.stringify(ghUsername)
+                    );
+                    navigate("/dashboard/member-profile");
+                  }
+                }
               }}
             >
               Sign In
