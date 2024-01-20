@@ -286,12 +286,12 @@ export function Profile() {
               {
                 src: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2020&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 alt: "",
-                text: "text",
+                text: "This is a sample post by OpenConnect",
               },
               {
-                src: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2020&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                src: "https://media.istockphoto.com/id/1322517295/photo/cyber-security-it-engineer-working-on-protecting-network-against-cyberattack-from-hackers-on.jpg?s=2048x2048&w=is&k=20&c=AYDxnKzNTK_iFSe-bvYrezj0MqfBwDok_TvBCbpG_2c=",
                 alt: "",
-                text: "text2",
+                text: "And this is second",
               },
             ]}
           />
