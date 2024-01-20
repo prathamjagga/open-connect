@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ImageGrid = () => {
+  let navigate = useNavigate();
   const images = [
     {
       src: "https://i.pinimg.com/736x/30/65/a5/3065a563087c469ef1f8b86518e5f272.jpg",
@@ -40,6 +42,9 @@ const ImageGrid = () => {
         {images.map((image, index) => (
           <div
             key={index}
+            onClick={() => {
+              navigate("/dashboard/autofix");
+            }}
             className="relative m-4 transform cursor-pointer overflow-hidden transition-transform duration-300 hover:scale-110"
           >
             <img

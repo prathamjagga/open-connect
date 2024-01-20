@@ -16,6 +16,7 @@ import { SignIn, SignUp } from "@/pages/auth";
 import Intro from "@/Intro";
 import ProjectView from "./pages/ProjectView";
 import ImageGrid from "./pages/GithubEcosystem";
+import AutoFix from "./pages/AutoFix";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -67,6 +68,11 @@ export const routes = [
         name: "Github Ecosystem Tools",
         path: "/github-ecosystem",
         element: <ImageGrid />,
+      },
+      {
+        name: "AutoFix",
+        path: "/autofix",
+        element: <AutoFix />,
       },
     ],
   },
