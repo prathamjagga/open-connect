@@ -65,6 +65,9 @@ export function Sidenav({ brandImg, brandName, routes }) {
             )}
             {pages.map(({ icon, name, path }) => {
               if (path == "/issue-forum") return;
+              if (path == "/people") return;
+              if (path == "/autofix") return;
+
               return (
                 <>
                   <li key={name}>
@@ -105,7 +108,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
 
 Sidenav.defaultProps = {
   brandImg: "/img/logo-ct.png",
-  brandName: "NAIH",
+  brandName: "OpenConnect",
 };
 
 Sidenav.propTypes = {

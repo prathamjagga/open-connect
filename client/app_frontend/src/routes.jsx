@@ -31,12 +31,28 @@ export const routes = [
     pages: [
       {
         icon: <UserCircleIcon {...icon} />,
-        name: "Community Profile",
+        name: "Community Dashboard",
         path: "/community-profile",
         element: <Profile />,
       },
       {
-        name: "Project",
+        icon: <UserCircleIcon {...icon} />,
+
+        name: "Your Hacker Profile",
+        path: "/member-profile",
+        element: <Members />,
+      },
+      {
+        icon: <SunIcon {...icon} />,
+
+        name: "Github Ecosystem Tools",
+        path: "/github-ecosystem",
+        element: <ImageGrid />,
+      },
+      {
+        icon: <ComputerDesktopIcon {...icon} />,
+
+        name: "Your Featured Project",
         path: "/project",
         element: <ProjectView />,
       },
@@ -50,13 +66,13 @@ export const routes = [
 
       {
         icon: <BellIcon {...icon} />,
-        name: "Trending in Open Source ✨",
+        name: "Trending in Open Source 🌟",
         path: "/trending",
         element: <Notifications />,
       },
       {
         icon: <ComputerDesktopIcon {...icon} />,
-        name: "AI Mentor Matching",
+        name: "Find Ideal Mentors with Taipy and AI ✨🤖",
         path: "/matching",
         element: <Matching />,
       },
@@ -66,20 +82,16 @@ export const routes = [
         path: "/analyse",
         element: <Analyse />,
       },
-      {
-        name: "Github Ecosystem Tools",
-        path: "/github-ecosystem",
-        element: <ImageGrid />,
-      },
+
       {
         name: "AutoFix",
         path: "/autofix",
         element: <AutoFix />,
       },
       {
-        name: "Hacker Profile",
-        path: "/member-profile",
-        element: <Members />,
+        name: "Monitor your Application Using Orkes Conductor 🚀☁️",
+        path: "/monitor",
+        element: <AutoFix />,
       },
     ],
   },

@@ -27,11 +27,26 @@ const AddPostDialog = ({ isOpen, onClose }) => {
     // Add your logic to handle the form submission here
     console.log("Post submitted:", post);
     // Clear the form
-    setPost({
-      postName: "",
-      description: "",
-      image: "",
-    });
+
+    fetch("http://localhost:3000/authenticate/add-post", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        photoUrl: post.image,
+        description: editorRef.current ? editorRef.current.getContent() : "",
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        alert("Post added");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+
     // Close the dialog
     onClose();
   };
@@ -92,7 +107,7 @@ const AddPostDialog = ({ isOpen, onClose }) => {
                   Image URL
                 </label>
                 <input
-                  type="file"
+                  type="text"
                   id="image"
                   name="image"
                   value={post.image}

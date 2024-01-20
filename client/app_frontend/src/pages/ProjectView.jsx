@@ -58,7 +58,7 @@ const ProjectView = ({}) => {
         className="rounded-md bg-blue-500 py-2 px-4 text-white hover:bg-blue-600 focus:outline-none"
         onClick={() => alert("Auto-Fixer does nothing on click")}
       >
-        Auto-Fixer
+        One Click Bug Fix (Auto - Fixer)
       </button>
 
       <div className="mb-4">
@@ -89,13 +89,24 @@ const ProjectView = ({}) => {
               >
                 {issue.title}
               </a>
+              <br />
               <button
-                className="btn float-right"
+                className="btn  "
                 onClick={() => navigate("/issue-forum/" + issue.number)}
               >
                 {" "}
                 Go to Discussion ✅ (<bold>PRO</bold>)
               </button>
+              <br />
+              <button
+                className="btn"
+                onClick={() => navigate("/dashboard/autofix")}
+              >
+                {" "}
+                Fix this issue using Auto-Fixer ✅ (<bold>PRO</bold>)
+              </button>
+              <br />
+              <br />
             </li>
           ))}
         </ul>

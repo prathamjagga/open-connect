@@ -26,13 +26,16 @@ const UpdateCode = () => {
 
     try {
       // Make API call
-      const response = await fetch("http://localhost:5001/api/auth/auto-fix", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "http://localhost:3000/authenticate/auto-fix",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.status === 200) {
         // Successful API call
