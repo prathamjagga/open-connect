@@ -1,7 +1,38 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Signup() {
+	const [details, setDetails] = {
+		name:"",
+		email:"",
+		password:"",
+		DevExp:"",
+		openSourceStory:"",
+		GithubUserName:"",
+		UrlForProfilePic:""
+	}
+	
+	const navigate = useNavigate();
+
+
+	const onSubmit = (e)=>{
+		if(details.name ==="" || details.email === "" || details.password === "" || details.DevExp === "" || details.openSourceStory === "" || details.GithubUserName === "" || details.UrlForProfilePic === "") {
+			alert("Please enter the required details")
+		} else {
+			localStorage.setItem("name" , details.name);
+			localStorage.setItem("email" , details.email);
+			localStorage.setItem("password" , details.password);
+			localStorage.setItem("DevExp" , details.DevExp);
+			localStorage.setItem("openSourceStory" , details.openSourceStory);
+			localStorage.setItem("GithubUserName" , details.GithubUserName);
+			localStorage.setItem("UrlForProfilePic" , details.UrlForProfilePic);
+			alert("hlw")
+			navigate("/auth/sign-in");
+		}
+	}
+
+
+
 	return (
 		<>
 			<div className="flex justify-center items-center h-screen bg-gradient-to-r from-yellow-200 to-pink-400 font-sans">
@@ -97,11 +128,12 @@ export default function Signup() {
 
 						<div className="flex justify-between">
 							<a className="text-lg cursor-pointer">Forgot Password ?</a>
-							<Link
+							<Link 
+								onClick = {(e)=>{onSubmit(e)}}
 								to="/login"
 								className="text-[#000000] hover:text-blue-700 hover:underline text-[1.25rem] font-[600]"
 							>
-								Login
+								Login 
 							</Link>
 						</div>
 					</div>

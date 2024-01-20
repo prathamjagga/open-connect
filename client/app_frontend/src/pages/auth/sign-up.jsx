@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {
   Card,
@@ -19,6 +19,8 @@ export function SignUp() {
   const [story, setStory] = useState(" ");
   const [ghUsername, setGH] = useState(" ");
   const [photoUrl, setURL] = useState(" ");
+
+  const navigate = useNavigate();
   return (
     <>
       <img
@@ -86,7 +88,8 @@ export function SignUp() {
             <Button
               variant="gradient"
               fullWidth
-              onClick={async () => {
+              onClick={async (e) => {
+                e.preventDefault();
                 var data = {
                   name,
                   email,
@@ -96,28 +99,57 @@ export function SignUp() {
                   story,
                   photoUrl,
                 };
-                fetch(
-                  "https://hf-backend-7fmd.onrender.com/api/profiles/addProfile",
-                  {
-                    // Adding method type
-                    method: "POST",
 
-                    // Adding body or contents to send
-                    body: JSON.stringify(data),
-
-                    // Adding headers to the request
-                    headers: {
-                      "Content-type": "application/json; charset=UTF-8",
-                    },
+                
+                
+                  if(data.name ==="" || data.email === "" || data.password === "" || data.experience === "" || data.story === "" || data.ghUsername === "" || data.photoUrl === "") {
+                    alert("Please enter the required details")
+                  } else {
+                    var port = "http://localhost:3000"
+                    const response = await fetch(`${port}/authenticate/register`, {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify({
+                        name:name,
+                        ghUsername: ghUsername,
+                        password: password,
+	                      email:email, 
+                        experience:experience,
+	                      story:story,
+                        photoURL:photoUrl
+                      }),
+                    });
+                    
+                    const json = await response.json();
+                    // console.log(json)
+                    
+                    alert(response.status)
+                    if ((Number)(response.status) == 200) {
+                     
+                      alert(`Great ${credentials.name}, You Register successfully`)
+                      localStorage.setItem("name" , JSON.stringify(data.name));
+                      localStorage.setItem("email" , JSON.stringify(data.email));
+                      localStorage.setItem("password" , JSON.stringify(data.password));
+                      localStorage.setItem("DevExp" , JSON.stringify(data.experience));
+                      localStorage.setItem("story" , JSON.stringify(data.story));
+                      localStorage.setItem("ghUsername" , JSON.stringify(data.ghUsername));
+                      localStorage.setItem("photoUrl" , JSON.stringify(data.photoUrl));
+                      
+                      navigate("/auth/sign-in"); 
+                      
+                    } else {
+                      if (response.status === 500) {
+                        alert("Please fill the required details.");
+                      } else {
+                        alert(json.msg);
+                      }
+                    }
+                    
+                  
+                    
                   }
-                )
-                  // Converting to JSON
-                  .then((response) => response.json())
-
-                  // Displaying results to console
-                  .then((json) => {
-                    alert("Signed up successfully. Please Sign in.");
-                  });
               }}
             >
               Sign Up

@@ -1,4 +1,110 @@
 const User = require("../models/User");
+const bcrypt = require("bcryptjs")
+const JWT_SECRET = "CENTRALIZED@NASHA@MUKTI@DATABASE"
+var jwt = require('jsonwebtoken');
+
+const register = async(req, res)=>{
+    try {
+        
+
+        // check whether the user email already exist or not 
+
+        let user = await User.findOne({ ghUsername: req.body.ghUsername });
+        if (user) {
+            // checking the user already exist or not 
+            return res.status(400).json({msg: "Sorry a user with the same username already exist" })
+        }
+
+        
+
+
+        var salt = bcrypt.genSaltSync(10);
+        secpass = bcrypt.hashSync(req.body.password, salt);
+        // adding salt to the password to make it more strong
+
+        // creating a new user 
+        user = await User.create({
+            name: req.body.name,
+            ghUsername: req.body.ghUsername,
+            password: secpass,
+			email:req.body.email, 
+			experience:req.body.experience,
+			story:req.body.story,
+			photoURL:req.body.photoURL
+
+        })
+
+        user.save();
+        
+        res.status(200).json("User registered successfully");
+    } catch (error) {
+        
+        // if there is some error in the code above 500 status code will be showed
+        console.error(error.message );
+        res.status(500).json("Internal Server Error");
+    }
+
+}
+
+const login  = async(req, res)=>{
+  
+    try {
+
+        const { ghUsername, password } = req.body;
+        console.log(ghUsername, password);
+        let user = await User.findOne({ ghUsername })
+        // find the user with email provided by the user
+        console.log(user)
+        if (!user) {
+            // user does not exixt with this email so send the status and msg
+            
+            return res.status(400).json({ msg: "Invalid credentials." })
+        }
+
+        const passwordCompare = await bcrypt.compare(password, user.password)
+        if (!passwordCompare) {
+           
+            return res.status(400).json({ msg: "Invalid credentials." })
+        }
+        
+
+        const data = {
+            user: {
+                // fetch the user id
+                id: user.id
+            }
+        }
+        const authToken = jwt.sign(data, JWT_SECRET);
+        // authtoken is provided to the user to authenticiate him/herself
+        // done with the help of jsonwebtoken package
+       
+        res.status(200).json({msg:"User logged successfully", "authToken":authToken });
+
+    } catch (error) {
+
+        // if there is some error in the code above 500 status code will be showed
+        console.error(error.message);
+        res.status(500).json("Internal Server Error ");
+
+    }
+
+
+}
+
+const getuser = async(req, res)=>{
+    try {
+        var ghUsername = req.body.ghUsername;
+        console.log(req.body.ghUsername)
+        const user = await User.findOne({ghUsername}).select("-password")
+        return res.status(200).send(user);
+    } catch (error) {
+
+        // if there is some error in the code above 500 status code will be showed
+        console.error(error.message);
+        res.status(500).send({msg:"Internal Server Error "});
+
+    }
+}
 
 const addProfile = async (req, res) => {
 	const body = req.body;
@@ -33,4 +139,7 @@ module.exports = {
 	getProfile,
 	addProfile,
 	getAllProfiles,
+	register,
+	login,
+	getuser
 };
