@@ -1,38 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ProjectPreviewModal from "./ProjectPreviewDialog";
 
 const ImageGrid = () => {
+  const [modal, setModal] = useState(false);
   let navigate = useNavigate();
   const images = [
     {
       src: "https://i.pinimg.com/736x/30/65/a5/3065a563087c469ef1f8b86518e5f272.jpg",
       alt: "Image 1",
-      text: "Auto Fix",
+      text: "One Click Update/Fix Code",
     },
     {
       src: "https://i.pinimg.com/736x/30/65/a5/3065a563087c469ef1f8b86518e5f272.jpg",
-      alt: "",
-      text: " 2",
+      alt: "Image 1",
+      text: "Github Profile Analysis",
     },
     {
       src: "https://i.pinimg.com/736x/30/65/a5/3065a563087c469ef1f8b86518e5f272.jpg",
-      alt: "Image 3",
-      text: "Description 3",
-    },
-    {
-      src: "https://i.pinimg.com/736x/30/65/a5/3065a563087c469ef1f8b86518e5f272.jpg",
-      alt: "Image 4",
-      text: "Description 4",
-    },
-    {
-      src: "https://i.pinimg.com/736x/30/65/a5/3065a563087c469ef1f8b86518e5f272.jpg",
-      alt: "Image 5",
-      text: "Description 5",
-    },
-    {
-      src: "https://i.pinimg.com/736x/30/65/a5/3065a563087c469ef1f8b86518e5f272.jpg",
-      alt: "Image 6",
-      text: "Description 6",
+      alt: "Image 1",
+      text: "Preview/Demo your WebApp before Deploy 🚀",
     },
   ];
 
@@ -43,7 +30,11 @@ const ImageGrid = () => {
           <div
             key={index}
             onClick={() => {
-              navigate("/dashboard/autofix");
+              if (image.text == "One Click Update/Fix Code")
+                navigate("/dashboard/autofix");
+              else if (image.text == "Github Profile Analysis")
+                navigate("/dashboard/analyse");
+              else setModal(true);
             }}
             className="relative m-4 transform cursor-pointer overflow-hidden transition-transform duration-300 hover:scale-110"
           >
@@ -64,6 +55,12 @@ const ImageGrid = () => {
           More features coming soon...
         </span>
       </div>
+      <ProjectPreviewModal
+        isOpen={modal}
+        onClose={() => {
+          setModal(false);
+        }}
+      />
     </div>
   );
 };

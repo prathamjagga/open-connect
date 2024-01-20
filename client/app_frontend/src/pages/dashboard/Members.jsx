@@ -115,7 +115,7 @@ export function Profile() {
         }));
 
         // Update the state using the functional form of setRepos
-        setRepos((prevRepos) => [...prevRepos, ...repoObjects]);
+        setRepos((prevRepos) => [...repoObjects]);
 
         console.log(typeof repos);
         // Now you can use userData and repoObjects as needed in your application
@@ -184,11 +184,9 @@ export function Profile() {
           <div className="mb-10 flex items-center justify-between gap-6">
             <div className="flex items-center gap-6">
               <Avatar
-                src={
-                  localStorage.getItem("photoURL")
-                    ? JSON.parse(localStorage.getItem("photoURL"))
-                    : "/img/bruce-mars.jpeg"
-                }
+                src={`https://avatars.githubusercontent.com/${JSON.parse(
+                  localStorage.getItem("ghUsername")
+                )}`}
                 alt="bruce-mars"
                 size="xl"
                 className="rounded-lg shadow-lg shadow-blue-gray-500/40"

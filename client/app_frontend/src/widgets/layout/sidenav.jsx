@@ -67,6 +67,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
               if (path == "/issue-forum") return;
               if (path == "/people") return;
               if (path == "/autofix") return;
+              if (path == "/analyse") return;
 
               return (
                 <>

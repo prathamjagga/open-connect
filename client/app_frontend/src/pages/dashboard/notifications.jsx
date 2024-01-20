@@ -77,7 +77,7 @@ export function Notifications() {
           className="m-0 p-4"
         >
           <Typography variant="h5" color="blue-gray">
-            Community Members / Students
+            Developers
           </Typography>
         </CardHeader>
         <CardBody className="flex flex-col gap-4 p-4">

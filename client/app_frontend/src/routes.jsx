@@ -19,6 +19,7 @@ import ImageGrid from "./pages/GithubEcosystem";
 import AutoFix from "./pages/AutoFix";
 import IssueForum from "./pages/issueForum";
 import Members from "./pages/dashboard/Members";
+import MonitoringDashboard from "./pages/Monitor";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -66,7 +67,7 @@ export const routes = [
 
       {
         icon: <BellIcon {...icon} />,
-        name: "Trending in Open Source 🌟",
+        name: "Trending in Open Source",
         path: "/trending",
         element: <Notifications />,
       },
@@ -91,7 +92,7 @@ export const routes = [
       {
         name: "Monitor your Application Using Orkes Conductor 🚀☁️",
         path: "/monitor",
-        element: <AutoFix />,
+        element: <MonitoringDashboard />,
       },
     ],
   },
