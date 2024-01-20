@@ -25,10 +25,11 @@ router.post("/auto-fix", async (req, res) => {
         cd ..
         rm -rf ./${req.body.repoName}
     `;
-		const scriptOutput = execSync(`powershell`, {
+		const scriptOutput = execSync(`sh`, {
 			input: script,
 			encoding: "utf-8",
 		});
+        console.log(scriptOutput)
 		res.status(200).json({ success: true, output: scriptOutput });
 	} catch (err) {
 		res.status(500).json({ success: false, message: err });
