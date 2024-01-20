@@ -135,10 +135,9 @@ export function SignUp() {
                   // console.log(json)
 
                   alert(response.status);
-                  if (response.status == 200) {
-                    const nav = useNavigate();
-                    nav("/auth/sign-in");
-                  }
+                  alert("Signed up successfully now you can log in");
+                  navigate("/auth/sign-in");
+
                   if (Number(response.status) == 200) {
                     alert(
                       `Great ${credentials.name}, You Register successfully`
