@@ -8,7 +8,6 @@ We are happy to welcome all the contributions from anyone willing to improve/add
 This documentation contains a set of guidelines to help you during the contribution process. We are happy to welcome all contributions from anyone willing to improve/add new ideas to this project.
 Thank you for helping out, and remember, **no contribution is too small**. Being an open-source contributor doesn't just mean writing code either. You can help out by writing documentation, tests, or even giving suggestions. 🏆
 
-
 ### 1. Issues 🐛
 
 - Always check the existing issues and **do not create an issue if it already exists**, or create your own issue.
@@ -87,10 +86,11 @@ git push -u origin Branch_Name
 
 ### 8 : Review Phase 🔍
 
-- 🎉🌟Congratulations! Sit and relax, you've made your contribution to OpenExplore project. Wait until the PR is reviewed and incorporate changes suggested by the community. After which the PR can be successfully merged.
+- 🎉🌟Congratulations! Sit and relax, you've made your contribution to OpenCommunity project. Wait until the PR is reviewed and incorporate changes suggested by the community. After which the PR can be successfully merged.
   🎉🎊
 
 ### Short flow of Contribution
+
 - Stage your changes for commit.
 
 ```
@@ -114,7 +114,6 @@ git push origin my-new-branch
 - Wait for your PR review and merge approval!
 
 - **Star this repository if you had fun contributing!**
-
 
 - Hurray! You successfully made a contribution!
 

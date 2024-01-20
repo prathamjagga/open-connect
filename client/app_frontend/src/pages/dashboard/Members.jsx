@@ -58,7 +58,7 @@ export function Profile() {
     alert("Fetching data...");
 
     try {
-      const port = "http://localhost:3000";
+      const port = "https://naih-frontend-production.up.railway.app";
       const response = await fetch(`${port}/authenticate/getuser`, {
         method: "POST",
         headers: {

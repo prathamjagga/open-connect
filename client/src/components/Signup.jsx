@@ -3,35 +3,40 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function Signup() {
 	const [details, setDetails] = {
-		name:"",
-		email:"",
-		password:"",
-		DevExp:"",
-		openSourceStory:"",
-		GithubUserName:"",
-		UrlForProfilePic:""
-	}
-	
+		name: "",
+		email: "",
+		password: "",
+		DevExp: "",
+		openSourceStory: "",
+		GithubUserName: "",
+		UrlForProfilePic: "",
+	};
+
 	const navigate = useNavigate();
 
-
-	const onSubmit = (e)=>{
-		if(details.name ==="" || details.email === "" || details.password === "" || details.DevExp === "" || details.openSourceStory === "" || details.GithubUserName === "" || details.UrlForProfilePic === "") {
-			alert("Please enter the required details")
+	const onSubmit = (e) => {
+		if (
+			details.name === "" ||
+			details.email === "" ||
+			details.password === "" ||
+			details.DevExp === "" ||
+			details.openSourceStory === "" ||
+			details.GithubUserName === "" ||
+			details.UrlForProfilePic === ""
+		) {
+			alert("Please enter the required details");
 		} else {
-			localStorage.setItem("name" , details.name);
-			localStorage.setItem("email" , details.email);
-			localStorage.setItem("password" , details.password);
-			localStorage.setItem("DevExp" , details.DevExp);
-			localStorage.setItem("openSourceStory" , details.openSourceStory);
-			localStorage.setItem("GithubUserName" , details.GithubUserName);
-			localStorage.setItem("UrlForProfilePic" , details.UrlForProfilePic);
-			alert("hlw")
+			localStorage.setItem("name", details.name);
+			localStorage.setItem("email", details.email);
+			localStorage.setItem("password", details.password);
+			localStorage.setItem("DevExp", details.DevExp);
+			localStorage.setItem("openSourceStory", details.openSourceStory);
+			localStorage.setItem("GithubUserName", details.GithubUserName);
+			localStorage.setItem("UrlForProfilePic", details.UrlForProfilePic);
+			alert("hlw");
 			navigate("/auth/sign-in");
 		}
-	}
-
-
+	};
 
 	return (
 		<>
@@ -39,7 +44,7 @@ export default function Signup() {
 				<div className="relative w-2/5 h-4/5  bg-white-400 flex justify-center border-4 ">
 					<div className="absolute bg-red-100 inset-1.5 p-10 ">
 						<h2 className="text-4xl font-semibold text-center mb-5">
-							Welcome to OpenExplore
+							Welcome to OpenConnect
 						</h2>
 						<div className="flex items-center">
 							<div className="mb-6">
@@ -128,12 +133,14 @@ export default function Signup() {
 
 						<div className="flex justify-between">
 							<a className="text-lg cursor-pointer">Forgot Password ?</a>
-							<Link 
-								onClick = {(e)=>{onSubmit(e)}}
+							<Link
+								onClick={(e) => {
+									onSubmit(e);
+								}}
 								to="/login"
 								className="text-[#000000] hover:text-blue-700 hover:underline text-[1.25rem] font-[600]"
 							>
-								Login 
+								Login
 							</Link>
 						</div>
 					</div>

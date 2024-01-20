@@ -28,16 +28,19 @@ const AddPostDialog = ({ isOpen, onClose }) => {
     console.log("Post submitted:", post);
     // Clear the form
 
-    fetch("http://localhost:3000/authenticate/add-post", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        photoUrl: post.image,
-        description: editorRef.current ? editorRef.current.getContent() : "",
-      }),
-    })
+    fetch(
+      "https://naih-frontend-production.up.railway.app/authenticate/add-post",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          photoUrl: post.image,
+          description: editorRef.current ? editorRef.current.getContent() : "",
+        }),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
