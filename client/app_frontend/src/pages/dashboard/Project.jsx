@@ -19,7 +19,7 @@ import { ProfileInfoCard, MessageCard } from "@/widgets/cards";
   import { platformSettingsData, conversationsData, projectsData } from "@/data";
   
 export default function Projects() {
-
+  var name = JSON.parse(localStorage.getItem("ghUsername"));
   const fetchTheData = async(e)=>{
    alert("hujhj")
    var username = await JSON.parse(localStorage.getItem("ghUsername"));
@@ -28,6 +28,7 @@ export default function Projects() {
    fetch(`https://api.github.com/users/${username}`)
     .then(response => response.json())
     .then(userData => {
+      
         console.log("User Data:", userData);
 
         // Fetch user's repositories
@@ -45,7 +46,7 @@ export default function Projects() {
 
   }
 
-
+  
   return (
     <>
     
@@ -68,9 +69,7 @@ export default function Projects() {
                 />
                 <div>
                   <Typography variant="h5" color="blue-gray" className="mb-1">
-                    {!localStorage.getItem("name") && "Please log in."}
-                    {localStorage.getItem("name") &&
-                      JSON.parse(localStorage.getItem("name"))}
+                  {name==""?"Please log in":name}
                   </Typography>
                   <Typography
                     variant="small"
@@ -122,8 +121,8 @@ export default function Projects() {
                     : "Please log in."
                 }
                 details={{
-                  Name: localStorage.getItem("name")
-                    ? JSON.parse(localStorage.getItem("name"))
+                  Name: localStorage.getItem("ghUsername")
+                    ? JSON.parse(localStorage.getItem("ghUsername"))
                     : "Please log in.",
                   email: localStorage.getItem("email")
                     ? JSON.parse(localStorage.getItem("email"))
@@ -177,15 +176,13 @@ export default function Projects() {
                 />
                 <div>
                   <Typography variant="h5" color="blue-gray" className="mb-1">
-                    {!localStorage.getItem("name") && "Please log in."}
-                    {localStorage.getItem("name") &&
-                      JSON.parse(localStorage.getItem("name"))}
+                  {name==""?"Please log in":name}
                   </Typography>
                   <Typography
                     variant="small"
                     className="font-normal text-blue-gray-600"
                   >
-                    Contributor
+                    Contributor 
                   </Typography>
                 </div>
               </div>

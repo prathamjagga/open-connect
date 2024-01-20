@@ -88,7 +88,8 @@ export function SignUp() {
             <Button
               variant="gradient"
               fullWidth
-              onClick={async () => {
+              onClick={async (e) => {
+                e.preventDefault();
                 var data = {
                   name,
                   email,
@@ -104,17 +105,50 @@ export function SignUp() {
                   if(data.name ==="" || data.email === "" || data.password === "" || data.experience === "" || data.story === "" || data.ghUsername === "" || data.photoUrl === "") {
                     alert("Please enter the required details")
                   } else {
+                    var port = "http://localhost:3000"
+                    const response = await fetch(`${port}/authenticate/register`, {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify({
+                        name:name,
+                        ghUsername: ghUsername,
+                        password: password,
+	                      email:email, 
+                        experience:experience,
+	                      story:story,
+                        photoURL:photoUrl
+                      }),
+                    });
                     
-                    localStorage.setItem("name" , JSON.stringify(data.name));
-                    localStorage.setItem("email" , JSON.stringify(data.email));
-                    localStorage.setItem("password" , JSON.stringify(data.password));
-                    localStorage.setItem("DevExp" , JSON.stringify(data.experience));
-                    localStorage.setItem("story" , JSON.stringify(data.story));
-                    localStorage.setItem("ghUsername" , JSON.stringify(data.ghUsername));
-                    localStorage.setItem("photoUrl" , JSON.stringify(data.photoUrl));
-
-                    alert("Great! Signup Successfully. Now please Sign in. ")
-                    navigate("/auth/sign-in");
+                    const json = await response.json();
+                    // console.log(json)
+                    
+                    alert(response.status)
+                    if ((Number)(response.status) == 200) {
+                     
+                      alert(`Great ${credentials.name}, You Register successfully`)
+                      localStorage.setItem("name" , JSON.stringify(data.name));
+                      localStorage.setItem("email" , JSON.stringify(data.email));
+                      localStorage.setItem("password" , JSON.stringify(data.password));
+                      localStorage.setItem("DevExp" , JSON.stringify(data.experience));
+                      localStorage.setItem("story" , JSON.stringify(data.story));
+                      localStorage.setItem("ghUsername" , JSON.stringify(data.ghUsername));
+                      localStorage.setItem("photoUrl" , JSON.stringify(data.photoUrl));
+                      
+                      navigate("/auth/sign-in"); 
+                      
+                    } else {
+                      if (response.status === 500) {
+                        alert("Please fill the required details.");
+                      } else {
+                        alert(json.msg);
+                      }
+                    }
+                    
+                  
+                    
                   }
               }}
             >

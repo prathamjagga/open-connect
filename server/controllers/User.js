@@ -51,9 +51,10 @@ const login  = async(req, res)=>{
     try {
 
         const { ghUsername, password } = req.body;
+        console.log(ghUsername, password);
         let user = await User.findOne({ ghUsername })
         // find the user with email provided by the user
-
+        console.log(user)
         if (!user) {
             // user does not exixt with this email so send the status and msg
             
@@ -92,14 +93,15 @@ const login  = async(req, res)=>{
 
 const getuser = async(req, res)=>{
     try {
-        user = req.user.id;
-        const user = await User.findById(user).select("-password")
-        return res.send(user);
+        var ghUsername = req.body.ghUsername;
+        console.log(req.body.ghUsername)
+        const user = await User.findOne({ghUsername}).select("-password")
+        return res.status(200).send(user);
     } catch (error) {
 
         // if there is some error in the code above 500 status code will be showed
         console.error(error.message);
-        res.status(500).send("Internal Server Error ");
+        res.status(500).send({msg:"Internal Server Error "});
 
     }
 }

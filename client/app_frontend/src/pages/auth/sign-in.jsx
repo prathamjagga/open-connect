@@ -60,49 +60,41 @@ export function SignIn() {
             <Button
               variant="gradient"
               fullWidth
-              onClick={() => {
+              onClick={async () => {
+               
                 if(ghUsername === "" || password === "") {
                   alert("Please enter the required details")
                 } else {
                   console.log("click");
-                  localStorage.setItem("ghUsername", JSON.stringify(ghUsername))
-                  navigate("/dashboard/profile")
-                }
-                
-                // fetch(
-                //   "https://hf-backend-7fmd.onrender.com/api/profiles/get-one/" +
-                //     ghUsername
-                // )
-                //   // Converting received data to JSON
-                //   .then((response) => response.json())
-                //   .then((json) => {
-                //     console.log(json);
-                //     let data = json.profile[0];
+                  const port = "http://localhost:3000";
+                  const response = await fetch(`${port}/authenticate/login`, {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      ghUsername: ghUsername,
+                      password: password,
+                    }),
+                  });
 
-                //     localStorage.setItem("name", JSON.stringify(data.name));
-                //     localStorage.setItem("email", JSON.stringify(data.email));
-                //     localStorage.setItem(
-                //       "password",
-                //       JSON.stringify(data.password)
-                //     );
-                //     localStorage.setItem(
-                //       "experience",
-                //       JSON.stringify(data.experience)
-                //     );
-                //     localStorage.setItem("story", JSON.stringify(data.story));
-                //     localStorage.setItem(
-                //       "ghUsername",
-                //       JSON.stringify(data.ghUsername)
-                //     );
-                //     localStorage.setItem(
-                //       "photoURL",
-                //       JSON.stringify(data.photoURL)
-                //     );
-
-                //     alert(
-                //       json.profile[0].name + ", You're signed in successfully!"
-                //     );
-                //   });
+                  const json = await response.json();
+                  console.log(json)
+            
+                  alert(response.status)
+                  if (response.status === 500 || response.status === 400) {
+                    if (response.status === 500) {
+                      alert("Please fill the required details.");
+                    } else {
+                      alert(json.msg);
+                    }
+                  } else {
+                    localStorage.setItem("token", "toke123")
+                    alert(`Great You Logged successfully`);
+                    localStorage.setItem("ghUsername", JSON.stringify(ghUsername));
+                    navigate("/dashboard/member-profile")
+                  } 
+                } 
               }}
             >
               Sign In
