@@ -89,7 +89,14 @@ export function Sidenav({ brandImg, brandName, routes }) {
                           {icon}
                           <Typography
                             color="inherit"
-                            className="font-medium capitalize"
+                            className={`h-6 font-medium capitalize ${
+                              name ==
+                                "Monitor your Application Using Orkes Conductor 🚀☁️" ||
+                              name ==
+                                "Find Ideal Mentors with Taipy and AI ✨🤖"
+                                ? "h-10"
+                                : ""
+                            }`}
                           >
                             {name}
                           </Typography>
