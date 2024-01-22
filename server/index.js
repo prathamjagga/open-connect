@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
 const userRoutes = require("./routes/User");
-
+const authenticate = require("./routes/authenticate");
 const app = express();
 
 app.use(express.json());
@@ -25,4 +25,7 @@ mongoose
 		console.error("MongoDB connection error:", error);
 	});
 
+app.use("/authenticate", authenticate)	
 app.use("/api/profiles", userRoutes);
+
+

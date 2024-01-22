@@ -7,31 +7,27 @@ This platform is open for all open source enthusiasts too as collaboration is  t
 
 ## Hot Features and Objectives
 
-### 1) One Click Bug Fixing Workflow 📃:
-Just mention buggy file location and fixed code and our script will automatically make the changes to your github code 🥳
 
-### 2) Code Preview Without Deploy 🚗:
-Upload your code and we enable you to look a web preview of your code. Support for multiple frameworks coming soon 🎉
 
-### 3) Hackers (Contributors) Portfolio/Profile with Projects using your github 💻:
+###  Hackers (Contributors) Portfolio/Profile with Projects using your github 💻:
 Nothing big but your interactive profile (portfolio) is ready made from your github.
 
-### 4) Bug Forums / Discuss / Review📃:
+###  Bug Forums / Discuss / Review📃:
 Just one click and your github issues are converted to Discussion forms.
 
-### 5) Communities and Connections 💻:
+###  Communities and Connections 💻:
 Create an intuitive and user-friendly interface to facilitate seamless navigation through projects based on communities and institute.
 
-### 6) Github Developer Ecosystem 🎓:
+###  Github Developer Ecosystem 🎓:
 Most features are based around github and automation.
 
-### 7) Peer Review Mechanism and Discussion Threads on Projects and Issues ⭐:
+###  Peer Review Mechanism and Discussion Threads on Projects and Issues ⭐:
 Integrate a robust peer review system, allowing students and faculty members to provide constructive feedback and suggestions on projects within their region and affiliated colleges.
 
-### 8) Github Analytics 🔍:
+###  Github Analytics 🔍:
 Powerful Github Analytics feature representing statistics of profile, languages and repos of users.
 
-### 9) Community-wise Segmentation 🗺️:
+###  Community-wise Segmentation 🗺️:
 Develop a system that categorizes student projects based on communities and its members.
 
 ## Tech that WE use

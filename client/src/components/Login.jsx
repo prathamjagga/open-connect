@@ -10,7 +10,7 @@ export default function Login() {
 				<div className="relative w-2/5 h-4/5  bg-fuchsia-400 flex items-center justify-center">
 					<div className="absolute bg-red-100 inset-1.5 p-10 text-stone-950">
 						<h2 className="text-4xl font-semibold text-center mb-10">
-							Welcome to OpenExplore
+							Welcome to OpenConnect
 						</h2>
 						<div className="mb-5">
 							<div className="flex items-center">

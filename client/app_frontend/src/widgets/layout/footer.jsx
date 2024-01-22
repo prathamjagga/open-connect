@@ -16,9 +16,9 @@ export function Footer({ brandName, brandLink, routes }) {
             target="_blank"
             className="transition-colors hover:text-blue-500"
           >
-            PADK Team at Openhacks
+            OpenExplorers Team at Techacks 4.0
           </a>{" "}
-          for a better OpenSource experience.
+          for students and communities that we love.
         </Typography>
       </div>
     </footer>

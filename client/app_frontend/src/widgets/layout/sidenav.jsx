@@ -63,34 +63,50 @@ export function Sidenav({ brandImg, brandName, routes }) {
                 </Typography>
               </li>
             )}
-            {pages.map(({ icon, name, path }) => (
-              <li key={name}>
-                <NavLink to={`/${layout}${path}`}>
-                  {({ isActive }) => (
-                    <Button
-                      variant={isActive ? "gradient" : "text"}
-                      color={
-                        isActive
-                          ? sidenavColor
-                          : sidenavType === "dark"
-                          ? "white"
-                          : "blue-gray"
-                      }
-                      className="flex items-center gap-4 px-4 capitalize"
-                      fullWidth
-                    >
-                      {icon}
-                      <Typography
-                        color="inherit"
-                        className="font-medium capitalize"
-                      >
-                        {name}
-                      </Typography>
-                    </Button>
-                  )}
-                </NavLink>
-              </li>
-            ))}
+            {pages.map(({ icon, name, path }) => {
+              if (path == "/issue-forum") return;
+              if (path == "/people") return;
+              if (path == "/autofix") return;
+              if (path == "/analyse") return;
+
+              return (
+                <>
+                  <li key={name}>
+                    <NavLink to={`/${layout}${path}`}>
+                      {({ isActive }) => (
+                        <Button
+                          variant={isActive ? "gradient" : "text"}
+                          color={
+                            isActive
+                              ? sidenavColor
+                              : sidenavType === "dark"
+                              ? "white"
+                              : "blue-gray"
+                          }
+                          className="flex items-center gap-4 px-4 capitalize"
+                          fullWidth
+                        >
+                          {icon}
+                          <Typography
+                            color="inherit"
+                            className={`h-6 font-medium capitalize ${
+                              name ==
+                                "Monitor your Application Using Orkes Conductor 🚀☁️" ||
+                              name ==
+                                "Find Ideal Mentors with Taipy and AI ✨🤖"
+                                ? "h-10"
+                                : ""
+                            }`}
+                          >
+                            {name}
+                          </Typography>
+                        </Button>
+                      )}
+                    </NavLink>
+                  </li>
+                </>
+              );
+            })}
           </ul>
         ))}
       </div>
@@ -100,7 +116,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
 
 Sidenav.defaultProps = {
   brandImg: "/img/logo-ct.png",
-  brandName: "OpenExplore",
+  brandName: "OpenConnect",
 };
 
 Sidenav.propTypes = {

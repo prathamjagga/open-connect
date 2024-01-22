@@ -14,6 +14,12 @@ import Matching from "@/pages/Matching";
 import Analyse from "@/pages/Analyse";
 import { SignIn, SignUp } from "@/pages/auth";
 import Intro from "@/Intro";
+import ProjectView from "./pages/ProjectView";
+import ImageGrid from "./pages/GithubEcosystem";
+import AutoFix from "./pages/AutoFix";
+import IssueForum from "./pages/issueForum";
+import Members from "./pages/dashboard/Members";
+import MonitoringDashboard from "./pages/Monitor";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -26,10 +32,32 @@ export const routes = [
     pages: [
       {
         icon: <UserCircleIcon {...icon} />,
-        name: "profile",
-        path: "/profile",
+        name: "Community Dashboard",
+        path: "/community-profile",
         element: <Profile />,
       },
+      {
+        icon: <UserCircleIcon {...icon} />,
+
+        name: "Your Hacker Profile",
+        path: "/member-profile",
+        element: <Members />,
+      },
+      {
+        icon: <SunIcon {...icon} />,
+
+        name: "Github Ecosystem Tools",
+        path: "/github-ecosystem",
+        element: <ImageGrid />,
+      },
+      {
+        icon: <ComputerDesktopIcon {...icon} />,
+
+        name: "Your Featured Project",
+        path: "/project",
+        element: <ProjectView />,
+      },
+
       {
         icon: <SunIcon {...icon} />,
         name: "community connect",
@@ -39,13 +67,13 @@ export const routes = [
 
       {
         icon: <BellIcon {...icon} />,
-        name: "Trending in Open Source ✨",
+        name: "Trending in Open Source",
         path: "/trending",
         element: <Notifications />,
       },
       {
         icon: <ComputerDesktopIcon {...icon} />,
-        name: "AI Mentor Matching",
+        name: "Find Ideal Mentors with Taipy and AI ✨🤖",
         path: "/matching",
         element: <Matching />,
       },
@@ -54,6 +82,17 @@ export const routes = [
         name: "Your Github Stats",
         path: "/analyse",
         element: <Analyse />,
+      },
+
+      {
+        name: "AutoFix",
+        path: "/autofix",
+        element: <AutoFix />,
+      },
+      {
+        name: "Monitor your Application Using Orkes Conductor 🚀☁️",
+        path: "/monitor",
+        element: <MonitoringDashboard />,
       },
     ],
   },
